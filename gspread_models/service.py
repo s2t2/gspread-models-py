@@ -1,32 +1,20 @@
 
 
-# adapted from:
-# ... https://developers.google.com/sheets/api/guides/authorizing
-# ... https://gspread.readthedocs.io/en/latest/oauth2.html
-# ... https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html
-# ... https://github.com/s2t2/birthday-wishes-py/blob/master/app/sheets.py
-# ... https://raw.githubusercontent.com/prof-rossetti/flask-sheets-template-2020/master/web_app/spreadsheet_service.py
-
 import os
-from datetime import datetime, timezone
-from pprint import pprint
 from typing import List
 from functools import cached_property
 
 from dotenv import load_dotenv
 from gspread import service_account, Worksheet
-from gspread.exceptions import SpreadsheetNotFound, WorksheetNotFound
-
-
-DEFAULT_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
-
-load_dotenv()
-
-GOOGLE_CREDENTIALS_FILEPATH = os.getenv("GOOGLE_CREDENTIALS_FILEPATH", default=DEFAULT_FILEPATH)
-GOOGLE_SHEETS_DOCUMENT_ID = os.getenv("GOOGLE_SHEETS_DOCUMENT_ID", default="OOPS, Please get the spreadsheet identifier from its URL, and set the 'GOOGLE_SHEETS_DOCUMENT_ID' environment variable accordingly...")
+from gspread.exceptions import WorksheetNotFound #, SpreadsheetNotFound
 
 from gspread_models.date_parser import DateParser
 
+load_dotenv()
+
+DEFAULT_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
+GOOGLE_CREDENTIALS_FILEPATH = os.getenv("GOOGLE_CREDENTIALS_FILEPATH", default=DEFAULT_FILEPATH)
+GOOGLE_SHEETS_DOCUMENT_ID = os.getenv("GOOGLE_SHEETS_DOCUMENT_ID", default="OOPS, Please get the spreadsheet identifier from its URL, and set the 'GOOGLE_SHEETS_DOCUMENT_ID' environment variable accordingly...")
 
 class SpreadsheetService(DateParser):
 
@@ -36,7 +24,6 @@ class SpreadsheetService(DateParser):
 
         print("SPREADSHEET SERVICE...")
         print("DOCUMENT ID:", self.document_id)
-
 
     @cached_property
     def doc(self):
@@ -60,7 +47,7 @@ class SpreadsheetService(DateParser):
         except WorksheetNotFound:
             print(f"CREATING NEW SHEET ('{sheet_name}')...")
             sheet = self.doc.add_worksheet(title=sheet_name, rows="3", cols="3") # rows and cols are required. can be overwritten later?
-            # todo: add columns self.COLUMNS
+            # consider adding columns based on self.COLUMNS
         return sheet
 
     # RECORDS
@@ -182,6 +169,9 @@ class SpreadsheetService(DateParser):
 
 
 if __name__ == "__main__":
+
+    from pprint import pprint
+
 
     ss = SpreadsheetService()
 
