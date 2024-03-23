@@ -32,7 +32,7 @@ def service():
 def model_context():
     """Use this fixture and subsequent model calls will be made against the test database."""
     BaseModel.set_document_id(GOOGLE_SHEETS_TEST_DOCUMENT_ID)
-    assert BaseModel.ss.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
+    assert BaseModel.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
 
     yield "Using test document!"
 
