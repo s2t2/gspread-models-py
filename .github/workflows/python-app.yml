@@ -38,8 +38,27 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
+
+
+
+
+    # USE OFFICIAL GOOGLE ACTION TO CREATE A CREDENTIALS JSON FILE
+    # ... https://github.com/google-github-actions/auth
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        # uses this encrypted secret set via github repo settings
+        # which is essentially a copy of the JSON credentials file contents
+        credentials_json: '${{ secrets.GOOGLE_API_CREDENTIALS }}'
+        # this will create a credentials file with a randomized name
+        create_credentials_file:  true
+
+
+    # RUN TESTS
     - name: Test with pytest
       env:
         GOOGLE_SHEETS_TEST_DOCUMENT_ID: ${{ secrets.GOOGLE_SHEETS_TEST_DOCUMENT_ID }}
+        GOOGLE_CREDENTIALS_FILEPATH: ${{ steps.auth.outputs.credentials_file_path }}
       run: |
         CI=true pytest
