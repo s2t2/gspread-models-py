@@ -4,10 +4,12 @@
 
 from datetime import datetime
 
+import pytest
+
 from gspread_models.base import BaseModel
+from conftest import GOOGLE_SHEETS_TEST_DOCUMENT_ID, CI_ENV, CI_SKIP_MESSAGE
 from test.models.book import Book
 
-from conftest import GOOGLE_SHEETS_TEST_DOCUMENT_ID
 
 def test_document_binding():
     test_doc_id = "testing123"
@@ -18,6 +20,9 @@ def test_document_binding():
     assert BaseModel.service.document_id == test_doc_id
     assert Book.service.document_id == test_doc_id
 
+
+
+@pytest.mark.skipif(CI_ENV, reason="Uses model context")
 def test_model_context_fixture(model_context):
     # model_context is using the test document:
     assert BaseModel.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
@@ -25,7 +30,7 @@ def test_model_context_fixture(model_context):
 
 
 
-
+@pytest.mark.skipif(CI_ENV, reason="Uses model context")
 def test_child_model(model_context):
 
     # DESTROY ALL:
