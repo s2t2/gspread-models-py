@@ -46,7 +46,7 @@ jobs:
     # ... https://github.com/google-github-actions/auth
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v0'
+      uses: 'google-github-actions/auth@v2'
       with:
         # uses this encrypted secret set via github repo settings
         # which is essentially a copy of the JSON credentials file contents
