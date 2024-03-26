@@ -1,7 +1,6 @@
 # gspread-models-py
 
-Model based interface into Google Sheets, using the `gspread` package.
-
+Model based ORM interface into Google Sheets, using the `gspread` package.
 
 ## Installation
 
@@ -17,11 +16,11 @@ Follow the [Google Cloud Setup Guide](/admin/GOOGLE_CLOUD.md) to setup a Google 
 
 Follow the [Google Sheets Setup Guide](/admin/GOOGLE_SHEETS.md) to setup a Google Sheet document and share editor access with your service account.
 
-## Usage
+## Usage Example
 
 ### Sheet Setup
 
-For this example, create a sheet called "products", and populate the first row with the following column headers:
+To setup this example, create a sheet called "products", and populate the first row with the following column headers (including metadata columns):
 
   + `id`
   + `name`
@@ -29,7 +28,9 @@ For this example, create a sheet called "products", and populate the first row w
   + `price`
   + `url`
   + `created_at`
+  + `updated_at`
 
+The column names and order must match the `COLUMS` defined in the model class (see below). The `id` column should be first, and the timestamps (`created_at` and `updated_at`) should be last.
 
 ### Model Class Definition
 
@@ -38,38 +39,41 @@ Define your own light-weight class that inherits from the base model:
 ```py
 from gspread_models.base import BaseModel
 
+# your custom model class, which inherits from BaseModel:
 class Product(BaseModel):
 
-    # designates the name of the sheet to use for this model class
+    # the name of the sheet to use for this model class:
     SHEET_NAME = "products"
 
-    # designates the model-specific columns
+    # the model-specific columns (excluding metadata columns):
     COLUMNS = ["name", "description", "price", "url"]
 
 ```
 
-> FYI: In addition to the model-specific column names defined in the class, the base model will add metadata fields, including: an auto-incrementing integer (`id`) as the record's unique identifier, as well as timestamps (`created_at` and `updated_at`).
+In addition to the model-specific `COLUMNS` list, the base model will manage **metadata columns**, including:
+  + an auto-incrementing integer (`id`), which acts as the record's unique identifier
+  + auto-updating timestamps (`created_at` and `updated_at`)
 
-> NOTE: the model-specific list of columns (`COLUMNS`) needs to exactly match the column names and column order already setup in the corresponding sheet. To clarify, `COLUMNS` should exclude the metadata columns.
+
 
 ### Query Interface
 
-The base model provides intuitive model-based query interface.
+The base model provides an intuitive query interface.
 
 #### Find All Records
 
-Invoke `find_all()` to return all records from the sheet. This will wrap the records in your custom class, which converts any timestamp strings to datetime objects
+Find all records from the sheet:
 
 ```py
-Product.find_all()
+Product.all()
 ```
 
 #### Find Record
 
-Invoke `find()` to return a record given its unique identifier:
+Find a record given its unique identifier:
 
 ```py
-Product.find(by_id=1)
+Product.find(1)
 ```
 
 #### Filtering Records
@@ -77,69 +81,47 @@ Product.find(by_id=1)
 Filter records based on class-specific attribute values (returns records that match ALL criteria):
 
 ```py
-Product.filter_by(name="Strawberries")
+Product.where(name="Strawberries")
 
-Product.filter_by(name="Strawberries", price=1000)
+Product.where(name="Strawberries", price=1000)
 ```
+
+
+
 
 #### Creating Records
 
-Creating new records:
+If the model class defines `SEEDS` as a list of dictionaries (see [`product.py`](/test/models/product.py) example), you can populate the sheet with these initial values:
 
 ```py
-product_attrs = dict(name="Blueberries", price=3.99, description="organic blues", url=None)
-Product.create(product_attrs)
+Product.seed()
 ```
 
-#### Saving Records
+Creating and persisting new records:
+
+```py
+Product.create(name="Blueberries", price=3.99, description="organic blues")
+```
+
+```py
+Product.create_all([{"name":"Product X"}, {"name":"Product Y"}])
+```
+
+#### Initializing and Saving Records
 
 After initializing a new record (whether it has previously been persisted or not), invoking `.save()` persists that record to the sheet:
 
 ```py
-product_attrs = dict(name="Blueberries", price=3.99, description="organic blues", url=None)
-product = Product(product_attrs)
+product = Product(name="Blueberries", price=3.99, description="organic blues", url=None)
 product.save()
 ```
 
-#### Seeding Records
+#### Destroying Records
 
-If you add `SEEDS` (list of dictionaries) to your model class definition, `.seed_all()` will populate the sheet with these initial values:
-
-```py
-from gspread_models.base import BaseModel
-
-class Product(BaseModel):
-
-    SHEET_NAME = "products"
-
-    COLUMNS = ["name", "description", "price", "url"]
-
-    SEEDS = [
-        {
-            'name': 'Strawberries',
-            'description': 'Juicy organic strawberries.',
-            'price': 4.99,
-            'url': 'https://picsum.photos/id/1080/360/200'
-        },
-        {
-            'name': 'Cup of Tea',
-            'description': 'An individually-prepared tea or coffee of choice.',
-            'price': 3.49,
-            'url': 'https://picsum.photos/id/225/360/200'
-        },
-        {
-            'name': 'Textbook',
-            'description': 'It has all the answers.',
-            'price': 129.99,
-            'url': 'https://picsum.photos/id/24/360/200'
-        }
-    ]
-```
-
-Populate the database with seeds:
+Clear the sheet by removing all records:
 
 ```py
-Product.seed_all()
+Product.destroy_all()
 ```
 
 ## [Contributing](/CONTRIBUTING.md)

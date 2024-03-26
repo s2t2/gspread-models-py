@@ -1,7 +1,7 @@
 
-from abc import abstractmethod
+#from abc import abstractmethod
 from typing import List, Dict
-from functools import cached_property
+#from functools import cached_property
 from datetime import datetime
 
 from gspread_models.service import SpreadsheetService
@@ -32,18 +32,20 @@ class BaseModel:
                 val = self.service.parse_timestamp(val)
             setattr(self, col, val)
 
+    # INSTANCE METHODS
 
     @property
     def created_at(self):
+        """Wraps timestamp string from the sheet in a native datetime object."""
         return self.service.parse_timestamp(self.attrs.get("created_at"))
 
     @property
     def updated_at(self):
+        """Wraps timestamp string from the sheet in a native datetime object."""
         return self.service.parse_timestamp(self.attrs.get("updated_at"))
 
-
     def __iter__(self):
-        """Allows you to say dict(obj) to convert the object into a dictionary."""
+        """Enables dictionary conversion by passing an object instance into the dict() function."""
         yield 'id', self.id
         for col in self.COLUMNS:
             yield col, getattr(self, col)
@@ -51,8 +53,8 @@ class BaseModel:
         yield 'updated_at', self.updated_at
 
     @property
-    def row(self):
-        """Returns a list of JSON serializable values, for writing to the sheet."""
+    def row(self) -> List:
+        """Returns an ordered list of JSON serializable values, for writing to the sheet."""
         values = []
         values.append(self.id)
         for col in self.COLUMNS:
@@ -64,6 +66,13 @@ class BaseModel:
         values.append(str(self.updated_at))
         return values
 
+    def save(self):
+        print("SAVING RECORD TO SHEET:")
+        print(dict(self))
+        #if self.id:
+        #    self.attrs["updated_at"] = self.service.generate_timestamp()
+        #    self.update(dict(self))
+        return self.create(dict(self))
 
 
     # CLASS METHODS
@@ -77,6 +86,10 @@ class BaseModel:
        print(f"SHEET ('{cls.SHEET_NAME}')...")
        return cls.service.get_sheet(sheet_name=cls.SHEET_NAME)
 
+
+
+    # API
+
     @classmethod
     def find(cls, by_id, sheet=None):
         """Fetches a record by its unique identifier."""
@@ -88,7 +101,7 @@ class BaseModel:
         return None
 
     @classmethod
-    def find_all(cls, sheet=None):
+    def all(cls, sheet=None):
         """Fetches all records from a given sheet."""
         sheet = sheet or cls.get_sheet() # assumes sheet exists, with the proper headers!
         records = sheet.get_all_records()
@@ -103,7 +116,8 @@ class BaseModel:
         return sheet.delete_rows(start_index=2, end_index=len(records)+1)
 
     @classmethod
-    def filter_by(cls, **kwargs):
+    def where(cls, **kwargs):
+        """Filter records which match all provided values."""
         #sheet = sheet or cls.get_sheet() # assumes sheet exists, with the proper headers!
         sheet = cls.get_sheet()
         records = sheet.get_all_records()
@@ -123,18 +137,17 @@ class BaseModel:
 
         return objs
 
-
     @classmethod
-    def create_records(cls, new_records:List[Dict], records=[]):
+    def create_all(cls, new_records:List[Dict], records=[]):
         """Appends new records (list of dictionaries) to the sheet.
             Adds auto-incrementing unique identifiers, and timestamp columns.
         """
         sheet = cls.get_sheet() # assumes sheet exists, with the proper headers!
 
-        records = records or cls.find_all(sheet=sheet)
+        records = records or cls.all(sheet=sheet)
         #next_row_number = len(records) + 2 # plus headers plus one
 
-        # auto-increment integer identifier
+        # auto-increment integer identifier:
         if any(records):
             existing_ids = [r.id for r in records]
             next_id = max(existing_ids) + 1
@@ -156,21 +169,12 @@ class BaseModel:
         return sheet.append_rows(rows)
 
     @classmethod
-    def seed_records(cls):
-        return cls.create_records(new_records=cls.SEEDS)
-
-    @classmethod
     def create(cls, new_record:dict):
         """Appends new records (list of dictionaries) to the sheet.
             Adds auto-incrementing unique identifiers, and timestamp columns.
         """
-        return cls.create_records([new_record])
+        return cls.create_all([new_record])
 
-    def save(self):
-        print("SAVING RECORD TO SHEET:")
-        #if self.id:
-        #    self.attrs["updated_at"] = self.service.generate_timestamp()
-        #    self.update(dict(self))
-        print(dict(self))
-        #self.cls.create_records([dict(self)])
-        return self.create(dict(self))
+    @classmethod
+    def seed(cls):
+        return cls.create_all(new_records=cls.SEEDS)

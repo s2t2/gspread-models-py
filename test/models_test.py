@@ -37,18 +37,22 @@ def test_child_model(model_context):
     Book.destroy_all()
 
     # SEED RECORDS:
-    Book.seed_records()
+    Book.seed()
 
     # FIND ALL:
-    books = Book.find_all()
+    books = Book.all()
     assert len(books) == 12
 
     # CREATE:
     # given a dictionary of compatible attributes:
     new_book = Book(dict(title="My Book", author="Me", year=2024))
     new_book.save()
+    # ... or keyword args:
+    #new_book = Book(title="Another Book", author="You", year=2024)
+    #new_book.save()
+
     # ... persists the record to sheet:
-    books = Book.find_all()
+    books = Book.all()
     assert len(books) == 13
     assert books[-1].title == "My Book"
 
@@ -62,8 +66,8 @@ def test_child_model(model_context):
 
     # FILTER BY:
     # returns as many items that match that criteria:
-    books = Book.filter_by(author="J.K. Rowling")
+    books = Book.where(author="J.K. Rowling")
     assert len(books) == 2
     # returns only the items that match ALL conditions:
-    books = Book.filter_by(title="The Great Gatsby", year=2020)
+    books = Book.where(title="The Great Gatsby", year=2020)
     assert not any(books)

@@ -34,7 +34,7 @@ class Product(BaseModel):
 
 if __name__ == "__main__":
 
-    products = Product.find_all()
+    products = Product.all()
 
     if any(products):
         for product in products:
@@ -43,16 +43,18 @@ if __name__ == "__main__":
     else:
         will_seed = input("Seed products? (y/n)? ").upper()
         if will_seed == "Y":
-            Product.seed_records()
+            Product.seed()
 
     #breakpoint()
-    #Product.seed_records()
 
-    results = Product.filter_by(name="Strawberries")
+    results = Product.where(name="Strawberries")
     print(len(results))
 
-    results = Product.filter_by(name="Strawberries", price=1000)
+    results = Product.where(name="Strawberries", price=1000)
     print(len(results))
 
     product = Product(dict(name="Blueberries", price=3.99, description="organic blues", url="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"))
     product.save()
+
+    #product = Product(name="Product X", price=99.99)
+    #product.save()
