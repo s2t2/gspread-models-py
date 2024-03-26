@@ -22,3 +22,8 @@ The "python-publish.yml" [configuration file](/.github/workflows/python-publish.
 To set this up, you need to obtain a PyPI access token and set it as a repository secret called `PYPI_API_TOKEN`. See:
   + https://pypi.org/help/#apitoken
   + https://pypi.org/manage/account/
+
+We want to give the token project-level access only, so first create a project:
+  + https://pypi.org/manage/account/publishing
+
+Then when you generate the token, give it access to this project only.
