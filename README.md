@@ -30,7 +30,7 @@ To setup this example, create a sheet called "products", and populate the first 
   + `created_at`
   + `updated_at`
 
-The column names and order must match the `COLUMS` defined in the model class (see below). The `id` column should be first, and the timestamps (`created_at` and `updated_at`) should be last.
+The column names and order must match the `COLUMNS` defined in the model class (see below). The `id` column should be first, and the timestamps (`created_at` and `updated_at`) should be last.
 
 ### Model Class Definition
 
@@ -100,7 +100,7 @@ Product.seed()
 Creating and persisting new records:
 
 ```py
-Product.create(name="Blueberries", price=3.99, description="organic blues")
+Product.create(dict(name="Blueberries", price=3.99, description="organic blues"))
 ```
 
 ```py
@@ -112,7 +112,7 @@ Product.create_all([{"name":"Product X"}, {"name":"Product Y"}])
 After initializing a new record (whether it has previously been persisted or not), invoking `.save()` persists that record to the sheet:
 
 ```py
-product = Product(name="Blueberries", price=3.99, description="organic blues", url=None)
+product = Product(dict(name="Blueberries", price=3.99, description="organic blues", url=None))
 product.save()
 ```
 
