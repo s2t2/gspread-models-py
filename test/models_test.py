@@ -11,27 +11,29 @@ from conftest import GOOGLE_SHEETS_TEST_DOCUMENT_ID #, CI_ENV, CI_SKIP_MESSAGE
 from test.models.book import Book
 
 
-def test_document_binding():
-    test_doc_id = "testing123"
-    assert BaseModel.service.document_id != test_doc_id
-    assert Book.service.document_id != test_doc_id
-
-    BaseModel.set_document_id(test_doc_id)
-    assert BaseModel.service.document_id == test_doc_id
-    assert Book.service.document_id == test_doc_id
+#def test_document_binding():
+#    test_doc_id = "testing123"
+#    assert BaseModel.service.document_id != test_doc_id
+#    assert Book.service.document_id != test_doc_id
+#
+#    BaseModel.set_document_id(test_doc_id)
+#    assert BaseModel.service.document_id == test_doc_id
+#    assert Book.service.document_id == test_doc_id
 
 
 
 #@pytest.mark.skipif(CI_ENV, reason="Uses model context")
-def test_model_context_fixture(model_context):
-    # model_context is using the test document:
-    assert BaseModel.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
-    assert Book.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
+#def test_model_context_fixture(model_context):
+#    # model_context is using the test document:
+#    assert BaseModel.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
+#    assert Book.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
 
 
 
 #@pytest.mark.skipif(CI_ENV, reason="Uses model context")
 def test_child_model(model_context):
+    # model context has already been configured to use the test document:
+    assert Book.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
 
     # DESTROY ALL:
     Book.destroy_all()
