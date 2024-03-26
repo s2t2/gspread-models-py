@@ -36,15 +36,22 @@ The column names and order must match the `COLUMNS` defined in the model class (
 Define your own light-weight class that inherits from the base model:
 
 ```python
+from gspread_models.service import SpreadsheetService
 from gspread_models.base import BaseModel
 
-# your custom model class, which inherits from BaseModel:
+# bind the models to a specific document and set of credentials:
+BaseModel.service = SpreadsheetService(
+  document_id="your-document-id",
+  credentials_filepath="/path/to/google-credentials.json"
+)
+
+# define your custom model class, which inherits from BaseModel:
 class Product(BaseModel):
 
-    # the name of the sheet to use for this model class:
+    # specify the name of the sheet to use for this model class:
     SHEET_NAME = "products"
 
-    # the model-specific columns (excluding metadata columns):
+    # specify the model-specific column names:
     COLUMNS = ["name", "description", "price", "url"]
 
 ```
@@ -52,8 +59,6 @@ class Product(BaseModel):
 In addition to the model-specific `COLUMNS` list, the base model will manage **metadata columns**, including:
   + an auto-incrementing integer (`id`), which acts as the record's unique identifier
   + auto-updating timestamps (`created_at`)
-
-
 
 ### Query Interface
 

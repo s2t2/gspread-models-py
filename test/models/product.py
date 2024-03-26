@@ -1,6 +1,8 @@
 
-from gspread_models.base import BaseModel
 from pprint import pprint
+
+from gspread_models.service import SpreadsheetService
+from gspread_models.base import BaseModel
 
 
 class Product(BaseModel):
@@ -33,6 +35,9 @@ class Product(BaseModel):
 
 
 if __name__ == "__main__":
+
+    # bind the base model to the default service:
+    BaseModel.service = SpreadsheetService()
 
     products = Product.all()
 

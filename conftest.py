@@ -10,17 +10,15 @@ from gspread_models.base import BaseModel
 
 load_dotenv()
 
-# for skipping tests on CI:
-CI_ENV = bool(os.getenv("CI", default="false").lower() == "true")
-CI_SKIP_MESSAGE = "taking a lighter touch to testing on the CI server, to reduce API usage and prevent rate limits"
-
 # an example sheet, used for testing purposes:
 GOOGLE_SHEETS_TEST_DOCUMENT_ID= os.getenv("GOOGLE_SHEETS_TEST_DOCUMENT_ID")
 
 # number of seconds to sleep between tests (helps manage Google API rate limit):
 TEST_SLEEP = int(os.getenv("TEST_SLEEP", default="3")) # maybe not necessary? / not used in model_context
 
-
+# for skipping tests on CI:
+CI_ENV = bool(os.getenv("CI", default="false").lower() == "true")
+#CI_SKIP_MESSAGE = "taking a lighter touch to testing on the CI server, to reduce API usage and prevent rate limits"
 
 
 @pytest.fixture()
@@ -36,9 +34,10 @@ def service():
 
 
 @pytest.fixture()
-def model_context():
+def model_context(service):
     """Use this fixture and subsequent model calls will be made against the test database."""
-    BaseModel.set_document_id(GOOGLE_SHEETS_TEST_DOCUMENT_ID)
+    #BaseModel.set_document_id(GOOGLE_SHEETS_TEST_DOCUMENT_ID)
+    BaseModel.service = service
     assert BaseModel.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
 
     yield "Using test document!"

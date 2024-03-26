@@ -34,6 +34,7 @@ class SpreadsheetService(DateParser):
             self.client = authorize(creds)
         else:
             self.client = service_account(filename=credentials_filepath)
+
         self.document_id = document_id
 
         print("SPREADSHEET SERVICE...")

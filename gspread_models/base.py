@@ -15,9 +15,15 @@ class BaseModel:
 
     SEEDS = [] # abstract constant to be set in child class
 
-    service = SpreadsheetService()
+    service = None # SpreadsheetService()
 
     def __init__(self, attrs:Dict):
+        """
+        Need to set service afterwards to bind the base model (and models which inherit from it) to a given sheet.
+
+            service = SpreadsheetService() # opportunity to pass custom credentials and designate the sheet
+            BaseModel.service = service
+        """
         self.attrs = attrs
 
         # attributes common to all child models
