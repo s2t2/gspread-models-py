@@ -14,3 +14,11 @@ Make another version of the test sheet document, to be used specifically for the
 The "python-app.yml" [configuration file](/.github/workflows/python-app.yml) specifies what steps should take place during the CI build.
 
 In GitHub repository settings, find the secrets and variables menu for "actions", and add a "New repository secret" called `GOOGLE_API_CREDENTIALS`, and paste the JSON content from the "google-credentials.json" file. Make sure there isn't an extra space or new line at the end!
+
+### Python Package Release
+
+The "python-publish.yml" [configuration file](/.github/workflows/python-publish.yml) triggers an update of the PyPI package when a new GitHub release is published.
+
+To set this up, you need to obtain a PyPI access token and set it as a repository secret called `PYPI_API_TOKEN`. See:
+  + https://pypi.org/help/#apitoken
+  + https://pypi.org/manage/account/
