@@ -39,10 +39,10 @@ class BaseModel:
         """Wraps timestamp string from the sheet in a native datetime object."""
         return self.service.parse_timestamp(self.attrs.get("created_at"))
 
-    @property
-    def updated_at(self):
-        """Wraps timestamp string from the sheet in a native datetime object."""
-        return self.service.parse_timestamp(self.attrs.get("updated_at"))
+    #@property
+    #def updated_at(self):
+    #    """Wraps timestamp string from the sheet in a native datetime object."""
+    #    return self.service.parse_timestamp(self.attrs.get("updated_at"))
 
     def __iter__(self):
         """Enables dictionary conversion by passing an object instance into the dict() function."""
@@ -50,7 +50,7 @@ class BaseModel:
         for col in self.COLUMNS:
             yield col, getattr(self, col)
         yield 'created_at', self.created_at
-        yield 'updated_at', self.updated_at
+        #yield 'updated_at', self.updated_at
 
     @property
     def row(self) -> List:
@@ -63,7 +63,7 @@ class BaseModel:
                 val = str(val)
             values.append(val)
         values.append(str(self.created_at))
-        values.append(str(self.updated_at))
+        #values.append(str(self.updated_at))
         return values
 
     def save(self):
@@ -160,7 +160,7 @@ class BaseModel:
             attrs["id"] = next_id
             now = cls.service.generate_timestamp()
             attrs["created_at"] = now
-            attrs["updated_at"] = now
+            #attrs["updated_at"] = now
 
             inst = cls(attrs)
             rows.append(inst.row)

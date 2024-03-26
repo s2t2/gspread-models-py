@@ -12,4 +12,4 @@ Modify the document's sharing settings to grant "Edit" privileges to the "client
 
 ### Model-specific Sheets Setup
 
-On each sheet, add an initial row of header columns. The first column name should be `id`, followed by any model-specific column names, followed by `created_at` and `updated_at`. The model interface will manage these additional metadata columns (`id`, `created_at` and `updated_at`) for you. The remaining model-specific columns should be listed as the `COLUMNS` in the corresponding model class (see README).
+On each sheet, add an initial row of header columns. The first column name should be `id`, followed by any model-specific column names, followed by `created_at`. The model interface will manage these additional metadata columns (`id`, and `created_at`) for you. The remaining model-specific columns should be listed as the `COLUMNS` in the corresponding model class (see README).
