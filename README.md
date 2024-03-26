@@ -115,6 +115,6 @@ Clear the sheet by removing all records:
 Product.destroy_all()
 ```
 
-## [Contributing](/CONTRIBUTING.md)
+## [Contributing](/.github/CONTRIBUTING.md)
 
 ## [License](/LICENSE)
