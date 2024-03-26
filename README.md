@@ -28,15 +28,14 @@ To setup this example, create a sheet called "products", and populate the first 
   + `price`
   + `url`
   + `created_at`
-  + `updated_at`
 
-The column names and order must match the `COLUMNS` defined in the model class (see below). The `id` column should be first, and the timestamps (`created_at` and `updated_at`) should be last.
+The column names and order must match the `COLUMNS` defined in the model class (see below). The `id` column should be first, and the timestamps (`created_at`) should be last.
 
 ### Model Class Definition
 
 Define your own light-weight class that inherits from the base model:
 
-```py
+```python
 from gspread_models.base import BaseModel
 
 # your custom model class, which inherits from BaseModel:
@@ -52,7 +51,7 @@ class Product(BaseModel):
 
 In addition to the model-specific `COLUMNS` list, the base model will manage **metadata columns**, including:
   + an auto-incrementing integer (`id`), which acts as the record's unique identifier
-  + auto-updating timestamps (`created_at` and `updated_at`)
+  + auto-updating timestamps (`created_at`)
 
 
 
@@ -107,14 +106,6 @@ Product.create(dict(name="Blueberries", price=3.99, description="organic blues")
 Product.create_all([{"name":"Product X"}, {"name":"Product Y"}])
 ```
 
-#### Initializing and Saving Records
-
-After initializing a new record (whether it has previously been persisted or not), invoking `.save()` persists that record to the sheet:
-
-```py
-product = Product(dict(name="Blueberries", price=3.99, description="organic blues", url=None))
-product.save()
-```
 
 #### Destroying Records
 

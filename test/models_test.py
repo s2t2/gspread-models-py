@@ -45,11 +45,13 @@ def test_child_model(model_context):
 
     # CREATE:
     # given a dictionary of compatible attributes:
-    new_book = Book(dict(title="My Book", author="Me", year=2024))
-    new_book.save()
+    #new_book = Book(dict(title="My Book", author="Me", year=2024))
+    #new_book.save()
     # ... or keyword args:
     #new_book = Book(title="Another Book", author="You", year=2024)
     #new_book.save()
+
+    Book.create(dict(title="My Book", author="Me", year=2024))
 
     # ... persists the record to sheet:
     books = Book.all()

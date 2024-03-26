@@ -72,7 +72,8 @@ class BaseModel:
         #if self.id:
         #    self.attrs["updated_at"] = self.service.generate_timestamp()
         #    self.update(dict(self))
-        return self.create(dict(self))
+        #return self.create(dict(self))
+        return self.create_all([dict(self)])
 
 
     # CLASS METHODS
