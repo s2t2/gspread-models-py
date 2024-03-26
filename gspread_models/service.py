@@ -5,7 +5,7 @@ from typing import List
 from functools import cached_property
 
 from dotenv import load_dotenv
-from gspread import service_account, Worksheet
+from gspread import service_account, authorize, Worksheet
 from gspread.exceptions import WorksheetNotFound #, SpreadsheetNotFound
 
 from gspread_models.date_parser import DateParser
@@ -18,8 +18,22 @@ GOOGLE_SHEETS_DOCUMENT_ID = os.getenv("GOOGLE_SHEETS_DOCUMENT_ID", default="OOPS
 
 class SpreadsheetService(DateParser):
 
-    def __init__(self, credentials_filepath=GOOGLE_CREDENTIALS_FILEPATH, document_id=GOOGLE_SHEETS_DOCUMENT_ID):
-        self.client = service_account(filename=credentials_filepath)
+    def __init__(self, credentials_filepath=GOOGLE_CREDENTIALS_FILEPATH, document_id=GOOGLE_SHEETS_DOCUMENT_ID, creds=None):
+        """Params:
+            Optionally pass creds (google.auth.compute_engine.credentials.Credentials) for example for use in colab notebook:
+
+                    from google.colab import auth
+                    from google.auth import default
+
+                    auth.authenticate_user()
+                    creds, _ = default()
+
+                    service = SpreadsheetService(creds=creds)
+        """
+        if creds:
+            self.client = authorize(creds)
+        else:
+            self.client = service_account(filename=credentials_filepath)
         self.document_id = document_id
 
         print("SPREADSHEET SERVICE...")
