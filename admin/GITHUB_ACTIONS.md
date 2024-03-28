@@ -19,6 +19,8 @@ In GitHub repository settings, find the secrets and variables menu for "actions"
 
 The "python-publish.yml" [configuration file](/.github/workflows/python-publish.yml) triggers an update of the PyPI package when a new GitHub release is published.
 
+#### PyPI API Key
+
 To set this up, you need to obtain a PyPI access token and set it as a repository secret called `PYPI_API_TOKEN`. See:
   + https://pypi.org/help/#apitoken
   + https://pypi.org/manage/account/
@@ -27,3 +29,13 @@ We want to give the token project-level access only, so first create a project:
   + https://pypi.org/manage/account/publishing
 
 Then when you generate the token, give it access to this project only.
+
+#### Pandoc Conversion
+
+The setup.py file governs the package information. Because PyPI doesn't display the markdown links properly, we are using pandoc to convert the markdown to RST.
+
+If you want to release or test pandoc conversion locally, first install pandoc:
+
+```sh
+brew install pandoc
+```
