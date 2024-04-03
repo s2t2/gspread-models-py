@@ -1,0 +1,57 @@
+site_name: Gspread Models Py
+
+# Repository 
+repo_name: GSPREAD-MODELS-PY
+repo_url: https://github.com/s2t2/gspread-models-py
+
+
+# link to colors https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+theme:
+  name: material
+  features: 
+    - navigation.tabs # this option gives us tabs at the top
+    # - navigation.sections # this active removes the drop down subfolders 
+    - navigation.top # look this up 
+    - search.sugguest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotation
+  palette:
+    - scheme: slate
+      primary: deep purple 
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+
+  # Right sidebar with the table of contents (requires 'navigation.sections')
+  right_sidebar:
+    - toc
+
+# Extensions
+markdown_extensions:
+  # - admonitiondocs
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.details
+
+
+
+Nav: 
+  - Home: ./README.md
+  - Roadmap: .github/ROADMAP.md
+  - Github actions: admin/GITHUB_ACTIONS.md
+  - Google cloud: admin/GOOGLE_CLOUD.md
+  - Google sheets: admin/GOOGLE_SHEETS.md
+  - Setup: setup.py
