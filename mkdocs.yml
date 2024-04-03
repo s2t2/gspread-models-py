@@ -47,11 +47,9 @@ markdown_extensions:
   - pymdownx.details
 
 
-
-Nav: 
-  - Home: ./README.md
+nav: 
+  - Home: README.md
   - Roadmap: .github/ROADMAP.md
   - Github actions: admin/GITHUB_ACTIONS.md
-  - Google cloud: admin/GOOGLE_CLOUD.md
-  - Google sheets: admin/GOOGLE_SHEETS.md
-  - Setup: setup.py
+  - Google Cloud: admin/GOOGLE_CLOUD.md
+  - Google Sheets: admin/GOOGLE_SHEETS.md
