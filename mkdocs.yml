@@ -1,0 +1,15 @@
+site_name: gspread-models
+
+theme:
+  name: material
+
+docs_dir: docs
+
+nav:
+  - Home: README.md
+  - API: API.md
+
+
+plugins:
+  - search
+  - mkdocstrings
