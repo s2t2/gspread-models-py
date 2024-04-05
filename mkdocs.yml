@@ -8,14 +8,17 @@ theme:
 
 docs_dir: docs
 
-#nav:
-#  #- Home: API.md
-#  - Contributing: .github/CONTRIBUTING.md
-#  - Roadmap: .github/ROADMAP.md
-#  - Setup:
-#    - Github Actions: admin/GITHUB_ACTIONS.md
-#    - Google Cloud: admin/GOOGLE_CLOUD.md
-#    - Google Sheets: admin/GOOGLE_SHEETS.md
+nav:
+  - Quickstart Guide: index.md
+  - API Reference:
+    - DateParser: api/date_parser.md
+    - SpreadsheetService: api/service.md
+    - BaseModel: api/base_model.md
+  - Setup:
+    - Google Cloud: admin/GOOGLE_CLOUD.md
+    - Google Sheets: admin/GOOGLE_SHEETS.md
+  - Contributing: CONTRIBUTING.md
+  - Roadmap: ROADMAP.md
 
 plugins:
   - search
