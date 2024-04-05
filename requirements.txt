@@ -13,6 +13,15 @@ gspread >= 6.0.2
 # testing:
 pytest
 
+# documentation site:
+mkdocs
+mkdocs-material
+#mkdocs-material-extensions
+#mkdocs-awesome-pages-plugin
+
+mkdocstrings
+mkdocstrings-python
+
 # releasing:
 # pypandoc requires `brew install pandoc`
 pypandoc

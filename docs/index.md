@@ -1,4 +1,4 @@
-# gspread_models
+# gspread_models (Python)
 
 Model based ORM interface into Google Sheets, using the `gspread` package.
 
@@ -12,9 +12,9 @@ pip install gspread_models
 
 ## Setup
 
-Follow the [Google Cloud Setup Guide](./docs/admin/GOOGLE_CLOUD.md) to setup a Google Cloud project with a service account access to the Google Sheets API, obtain a service account credentials JSON file.
+Follow the [Google Cloud Setup Guide](/docs/admin/GOOGLE_CLOUD.md) to setup a Google Cloud project with a service account access to the Google Sheets API, obtain a service account credentials JSON file.
 
-Follow the [Google Sheets Setup Guide](./docs/admin/GOOGLE_SHEETS.md) to setup a Google Sheet document and share editor access with your service account.
+Follow the [Google Sheets Setup Guide](/docs/admin/GOOGLE_SHEETS.md) to setup a Google Sheet document and share editor access with your service account.
 
 ## Usage Example
 
@@ -120,6 +120,6 @@ Clear the sheet by removing all records:
 Product.destroy_all()
 ```
 
-## [Contributing](/.github/CONTRIBUTING.md)
+## [Contributing](/docs/CONTRIBUTING.md)
 
-## [License](/LICENSE)
+## [Roadmap](/docs/ROADMAP.md)

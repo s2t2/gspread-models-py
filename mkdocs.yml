@@ -1,0 +1,67 @@
+site_name: gspread-models
+
+repo_name: gspread-models-py
+repo_url: https://github.com/s2t2/gspread-models-py
+
+theme:
+  name: material
+
+docs_dir: docs
+
+nav:
+  - Quickstart Guide: index.md
+  - API Reference:
+    - DateParser: api/date_parser.md
+    - SpreadsheetService: api/service.md
+    - BaseModel: api/base_model.md
+  - Setup:
+    - Google Cloud: admin/GOOGLE_CLOUD.md
+    - Google Sheets: admin/GOOGLE_SHEETS.md
+  - Contributing: CONTRIBUTING.md
+  - Roadmap: ROADMAP.md
+
+plugins:
+  - search
+  - mkdocstrings
+
+
+
+# link to colors https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+theme:
+  name: material
+  features:
+    - navigation.tabs # this option gives us tabs at the top
+    # - navigation.sections # this active removes the drop down subfolders
+    - navigation.top # look this up
+    - search.sugguest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotation
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+  # Right sidebar with the table of contents (requires 'navigation.sections')
+  right_sidebar:
+    - toc
+
+# Extensions
+markdown_extensions:
+  # - admonitiondocs
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  #- pymdownx.superfences
+  #- pymdownx.tabbed
+  #- pymdownx.details
