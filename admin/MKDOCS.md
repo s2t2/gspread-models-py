@@ -1,6 +1,8 @@
 # Documentation Site
 
 
+
+
 Preview docs at localhost:8000:
 
 ```sh
@@ -19,3 +21,7 @@ Publish docs to the "gh-pages" branch:
 ```sh
 mkdocs gh-deploy
 ```
+
+References:
+
+  + https://www.mkdocs.org/user-guide/deploying-your-docs/
