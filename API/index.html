@@ -1,0 +1,1453 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>API - gspread-models</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documentation-for-gspread-models-package" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="gspread-models" class="md-header__button md-logo" aria-label="gspread-models" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            gspread-models
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="gspread-models" class="md-nav__button md-logo" aria-label="gspread-models" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    gspread-models
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../README.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseModel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.set_document_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_document_id
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.get_sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_sheet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.find" class="md-nav__link">
+    <span class="md-ellipsis">
+      find
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.all" class="md-nav__link">
+    <span class="md-ellipsis">
+      all
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.destroy_all" class="md-nav__link">
+    <span class="md-ellipsis">
+      destroy_all
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.where" class="md-nav__link">
+    <span class="md-ellipsis">
+      where
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.create_all" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_all
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.create" class="md-nav__link">
+    <span class="md-ellipsis">
+      create
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.date_parser.DateParser" class="md-nav__link">
+    <span class="md-ellipsis">
+      DateParser
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.date_parser.DateParser.generate_timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_timestamp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.date_parser.DateParser.parse_timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      parse_timestamp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService" class="md-nav__link">
+    <span class="md-ellipsis">
+      SpreadsheetService
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.doc" class="md-nav__link">
+    <span class="md-ellipsis">
+      doc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      sheets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.find_or_create_sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      find_or_create_sheet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.get_sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_sheet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel" class="md-nav__link">
+    <span class="md-ellipsis">
+      BaseModel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.set_document_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_document_id
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.get_sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_sheet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.find" class="md-nav__link">
+    <span class="md-ellipsis">
+      find
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.all" class="md-nav__link">
+    <span class="md-ellipsis">
+      all
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.destroy_all" class="md-nav__link">
+    <span class="md-ellipsis">
+      destroy_all
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.where" class="md-nav__link">
+    <span class="md-ellipsis">
+      where
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.create_all" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_all
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.base.BaseModel.create" class="md-nav__link">
+    <span class="md-ellipsis">
+      create
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.date_parser.DateParser" class="md-nav__link">
+    <span class="md-ellipsis">
+      DateParser
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.date_parser.DateParser.generate_timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_timestamp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.date_parser.DateParser.parse_timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      parse_timestamp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService" class="md-nav__link">
+    <span class="md-ellipsis">
+      SpreadsheetService
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.doc" class="md-nav__link">
+    <span class="md-ellipsis">
+      doc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      sheets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.find_or_create_sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      find_or_create_sheet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gspread_models.service.SpreadsheetService.get_sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_sheet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="documentation-for-gspread-models-package">Documentation for <code>gspread-models</code> Package</h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="gspread_models.base.BaseModel"></a>
+  <div class="doc doc-contents first">
+
+
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.set_document_id" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">set_document_id</span><span class="p">(</span><span class="n">document_id</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.get_sheet" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">get_sheet</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.find" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">find</span><span class="p">(</span><span class="n">by_id</span><span class="p">,</span> <span class="n">sheet</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fetches a record by its unique identifier.</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.all" class="doc doc-heading">
+          <code class="highlight language-python"><span class="nb">all</span><span class="p">(</span><span class="n">sheet</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fetches all records from a given sheet.</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.destroy_all" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">destroy_all</span><span class="p">(</span><span class="n">sheet</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Removes all records from a given sheet, except the header row.</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.where" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">where</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Filter records which match all provided values.</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.create_all" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">create_all</span><span class="p">(</span><span class="n">new_records</span><span class="p">,</span> <span class="n">records</span><span class="o">=</span><span class="p">[])</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Appends new records (list of dictionaries) to the sheet.
+Adds auto-incrementing unique identifiers, and timestamp columns.</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.base.BaseModel.create" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">create</span><span class="p">(</span><span class="n">new_record</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Appends new records (list of dictionaries) to the sheet.
+Adds auto-incrementing unique identifiers, and timestamp columns.</p>
+
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="gspread_models.date_parser.DateParser"></a>
+  <div class="doc doc-contents first">
+
+  
+      <p>Mixin for date parsing / interfacing with google sheets date formatting.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>gspread_models/date_parser.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">DateParser</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mixin for date parsing / interfacing with google sheets date formatting.&quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">generate_timestamp</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates a new timestamp of the current time in UTC timezone.</span>
+<span class="sd">            Returns a datetime object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">parse_timestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts a timestamp string to a datetime object as necessary.</span>
+<span class="sd">            Ensures you are working with a datetime object.</span>
+
+<span class="sd">            Params:</span>
+<span class="sd">                ts (str) : a timestamp string in format provided by google sheets</span>
+
+<span class="sd">            Example: DateParser.parse_timestamp(&#39;2023-03-08 19:59:16.471152+00:00&#39;)</span>
+
+<span class="sd">            Returns a datetime object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">ts</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">DATE_FORMAT</span><span class="p">)</span>
+        <span class="c1">#else:</span>
+        <span class="c1">#    # something went wrong! use original value. consider raising error</span>
+        <span class="c1">#    return ts</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">validate_timestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">DATE_FORMAT</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.date_parser.DateParser.generate_timestamp" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">generate_timestamp</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Generates a new timestamp of the current time in UTC timezone.
+Returns a datetime object.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>gspread_models/date_parser.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">generate_timestamp</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates a new timestamp of the current time in UTC timezone.</span>
+<span class="sd">        Returns a datetime object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.date_parser.DateParser.parse_timestamp" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">parse_timestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Converts a timestamp string to a datetime object as necessary.
+Ensures you are working with a datetime object.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>ts</code></td>
+          <td>
+                <code>str) </code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>a timestamp string in format provided by google sheets</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <p>Example: DateParser.parse_timestamp('2023-03-08 19:59:16.471152+00:00')</p>
+<p>Returns a datetime object.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>gspread_models/date_parser.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">parse_timestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a timestamp string to a datetime object as necessary.</span>
+<span class="sd">        Ensures you are working with a datetime object.</span>
+
+<span class="sd">        Params:</span>
+<span class="sd">            ts (str) : a timestamp string in format provided by google sheets</span>
+
+<span class="sd">        Example: DateParser.parse_timestamp(&#39;2023-03-08 19:59:16.471152+00:00&#39;)</span>
+
+<span class="sd">        Returns a datetime object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ts</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">DATE_FORMAT</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="gspread_models.service.SpreadsheetService"></a>
+  <div class="doc doc-contents first">
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="gspread_models.date_parser.DateParser" href="#gspread_models.date_parser.DateParser">DateParser</a></code></p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>gspread_models/service.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SpreadsheetService</span><span class="p">(</span><span class="n">DateParser</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">credentials_filepath</span><span class="o">=</span><span class="n">GOOGLE_CREDENTIALS_FILEPATH</span><span class="p">,</span> <span class="n">document_id</span><span class="o">=</span><span class="n">GOOGLE_SHEETS_DOCUMENT_ID</span><span class="p">,</span> <span class="n">creds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Params:</span>
+<span class="sd">            Optionally pass creds (google.auth.compute_engine.credentials.Credentials) for example for use in colab notebook:</span>
+
+<span class="sd">                    from google.colab import auth</span>
+<span class="sd">                    from google.auth import default</span>
+
+<span class="sd">                    auth.authenticate_user()</span>
+<span class="sd">                    creds, _ = default()</span>
+
+<span class="sd">                    service = SpreadsheetService(creds=creds)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">creds</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">authorize</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">credentials_filepath</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">document_id</span> <span class="o">=</span> <span class="n">document_id</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SPREADSHEET SERVICE...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DOCUMENT ID:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">document_id</span><span class="p">)</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span> <span class="nf">doc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the given document. NOTE: this will make an API call.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">open_by_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document_id</span><span class="p">)</span> <span class="c1">#&gt; &lt;class &#39;gspread.models.Spreadsheet&#39;&gt;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sheets</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Worksheet</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List all sheets in the given document.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">worksheets</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Worksheet</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a specific sheet in the document.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">worksheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">find_or_create_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Worksheet</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;access a sheet within the document, or create if not exists&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sheet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">worksheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;FOUND SHEET: &#39;</span><span class="si">{</span><span class="n">sheet_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">WorksheetNotFound</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CREATING NEW SHEET (&#39;</span><span class="si">{</span><span class="n">sheet_name</span><span class="si">}</span><span class="s2">&#39;)...&quot;</span><span class="p">)</span>
+            <span class="n">sheet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span> <span class="c1"># rows and cols are required. can be overwritten later?</span>
+            <span class="c1"># consider adding columns based on self.COLUMNS</span>
+        <span class="k">return</span> <span class="n">sheet</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="gspread_models.service.SpreadsheetService.doc" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">doc</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Get the given document. NOTE: this will make an API call.</p>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="gspread_models.service.SpreadsheetService.sheets" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">sheets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Worksheet</span><span class="p">]</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>List all sheets in the given document.</p>
+  </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.service.SpreadsheetService.__init__" class="doc doc-heading">
+          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">credentials_filepath</span><span class="o">=</span><span class="n">GOOGLE_CREDENTIALS_FILEPATH</span><span class="p">,</span> <span class="n">document_id</span><span class="o">=</span><span class="n">GOOGLE_SHEETS_DOCUMENT_ID</span><span class="p">,</span> <span class="n">creds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Params:
+Optionally pass creds (google.auth.compute_engine.credentials.Credentials) for example for use in colab notebook:</p>
+<pre><code>    from google.colab import auth
+    from google.auth import default
+
+    auth.authenticate_user()
+    creds, _ = default()
+
+    service = SpreadsheetService(creds=creds)
+</code></pre>
+
+          <details class="quote">
+            <summary>Source code in <code>gspread_models/service.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">credentials_filepath</span><span class="o">=</span><span class="n">GOOGLE_CREDENTIALS_FILEPATH</span><span class="p">,</span> <span class="n">document_id</span><span class="o">=</span><span class="n">GOOGLE_SHEETS_DOCUMENT_ID</span><span class="p">,</span> <span class="n">creds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Params:</span>
+<span class="sd">        Optionally pass creds (google.auth.compute_engine.credentials.Credentials) for example for use in colab notebook:</span>
+
+<span class="sd">                from google.colab import auth</span>
+<span class="sd">                from google.auth import default</span>
+
+<span class="sd">                auth.authenticate_user()</span>
+<span class="sd">                creds, _ = default()</span>
+
+<span class="sd">                service = SpreadsheetService(creds=creds)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">creds</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">authorize</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">service_account</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">credentials_filepath</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">document_id</span> <span class="o">=</span> <span class="n">document_id</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SPREADSHEET SERVICE...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DOCUMENT ID:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">document_id</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.service.SpreadsheetService.find_or_create_sheet" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">find_or_create_sheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>access a sheet within the document, or create if not exists</p>
+
+          <details class="quote">
+            <summary>Source code in <code>gspread_models/service.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">find_or_create_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Worksheet</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;access a sheet within the document, or create if not exists&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sheet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">worksheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;FOUND SHEET: &#39;</span><span class="si">{</span><span class="n">sheet_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">WorksheetNotFound</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CREATING NEW SHEET (&#39;</span><span class="si">{</span><span class="n">sheet_name</span><span class="si">}</span><span class="s2">&#39;)...&quot;</span><span class="p">)</span>
+        <span class="n">sheet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span> <span class="c1"># rows and cols are required. can be overwritten later?</span>
+        <span class="c1"># consider adding columns based on self.COLUMNS</span>
+    <span class="k">return</span> <span class="n">sheet</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="gspread_models.service.SpreadsheetService.get_sheet" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">get_sheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Get a specific sheet in the document.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>gspread_models/service.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_sheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Worksheet</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a specific sheet in the document.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">worksheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
