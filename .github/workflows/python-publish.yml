@@ -32,7 +32,7 @@ jobs:
     # for markdown to RST conversion (see setup.py file)
     # https://github.com/pandoc/actions/tree/main/setup
     - name: Install
-      uses: pandoc/actions/setup@{main}
+      uses: pandoc/actions/setup@main
       with:
         version: 2.19
 
