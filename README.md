@@ -104,11 +104,14 @@ Product.seed()
 Creating and persisting new records:
 
 ```py
-Product.create(dict(name="Blueberries", price=3.99, description="organic blues"))
+Product.create({"name": "Blueberries", "price":3.99, "description":"organic blues"})
 ```
 
 ```py
-Product.create_all([{"name":"Product X"}, {"name":"Product Y"}])
+Product.create_all([
+  {"name": "Product X"},
+  {"name": "Product Y"}
+])
 ```
 
 
