@@ -6,7 +6,9 @@ from datetime import datetime
 
 #import pytest
 
+from gspread import Worksheet
 from gspread_models.base import BaseModel
+
 from conftest import GOOGLE_SHEETS_TEST_DOCUMENT_ID #, CI_ENV, CI_SKIP_MESSAGE
 from test.models.book import Book
 
@@ -34,6 +36,10 @@ from test.models.book import Book
 def test_child_model(model_context):
     # model context has already been configured to use the test document:
     assert Book.service.document_id == GOOGLE_SHEETS_TEST_DOCUMENT_ID
+
+    sheet = Book.sheet
+    assert isinstance(sheet, Worksheet)
+    assert sheet.title == "books"
 
     # DESTROY ALL:
     Book.destroy_all()
