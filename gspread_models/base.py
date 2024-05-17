@@ -97,12 +97,13 @@ class BaseModel:
        print(f"GET SHEET ('{cls.SHEET_NAME}')...")
        return cls.service.get_sheet(sheet_name=cls.SHEET_NAME)
 
+    # using @property + @lru_cache because @cached_property throws:
+    # ... TypeError: Cannot use cached_property instance without calling __set_name__ on it.
     @classmethod
     @property
-    @lru_cache(maxsize=None) # property + lru_cache because @cached_property throws: TypeError: Cannot use cached_property instance without calling __set_name__ on it.
+    @lru_cache(maxsize=None)
     def sheet(cls) -> Worksheet:
         """Caches the sheet to avoid unnecessary API requests."""
-        # return cls._sheet or cls.get_sheet()
         return cls.get_sheet()
 
     # ... API
@@ -110,7 +111,7 @@ class BaseModel:
     @classmethod
     def find(cls, by_id):
         """Fetches a record by its unique identifier."""
-        sheet = cls.sheet #sheet or cls.get_sheet() # assumes sheet exists, with the proper headers!
+        sheet = cls.sheet
         records = sheet.get_all_records()
         for record in records:
             if record.get("id") == by_id:
@@ -120,14 +121,14 @@ class BaseModel:
     @classmethod
     def all(cls):
         """Fetches all records from a given sheet."""
-        sheet = cls.sheet #sheet or cls.get_sheet() # assumes sheet exists, with the proper headers!
+        sheet = cls.sheet
         records = sheet.get_all_records()
         return [cls(record) for record in records]
 
     @classmethod
     def destroy_all(cls):
         """Removes all records from a given sheet, except the header row."""
-        sheet = cls.sheet #sheet or cls.get_sheet()
+        sheet = cls.sheet
         records = sheet.get_all_records()
         # start on the second row, and delete one more than the number of records (to account for header row)
         return sheet.delete_rows(start_index=2, end_index=len(records)+1)
@@ -135,8 +136,7 @@ class BaseModel:
     @classmethod
     def where(cls, **kwargs):
         """Filter records which match all provided values."""
-        #sheet = sheet or cls.get_sheet() # assumes sheet exists, with the proper headers!
-        sheet = cls.sheet #cls.get_sheet()
+        sheet = cls.sheet
         records = sheet.get_all_records()
         objs = []
         for attrs in records:
@@ -159,9 +159,9 @@ class BaseModel:
         """Appends new records (list of dictionaries) to the sheet.
             Adds auto-incrementing unique identifiers, and timestamp columns.
         """
-        sheet = cls.sheet # cls.get_sheet() # assumes sheet exists, with the proper headers!
+        sheet = cls.sheet
 
-        records = records or cls.all() # cls.all(sheet=sheet)
+        records = records or cls.all()
         #next_row_number = len(records) + 2 # plus headers plus one
 
         # auto-increment integer identifier:
