@@ -81,9 +81,3 @@ def test_child_model(model_context):
     # returns only the items that match ALL conditions:
     books = Book.where(title="The Great Gatsby", year=2020)
     assert not any(books)
-
-
-#def test_123(model_context):
-#
-#
-#    breakpoint()

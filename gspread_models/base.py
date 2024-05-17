@@ -111,8 +111,7 @@ class BaseModel:
     @classmethod
     def find(cls, by_id):
         """Fetches a record by its unique identifier."""
-        sheet = cls.sheet
-        records = sheet.get_all_records()
+        records = cls.sheet.get_all_records()
         for record in records:
             if record.get("id") == by_id:
                 return cls(record)
@@ -121,32 +120,24 @@ class BaseModel:
     @classmethod
     def all(cls):
         """Fetches all records from a given sheet."""
-        sheet = cls.sheet
-        records = sheet.get_all_records()
+        records = cls.sheet.get_all_records()
         return [cls(record) for record in records]
 
     @classmethod
     def destroy_all(cls):
         """Removes all records from a given sheet, except the header row."""
-        sheet = cls.sheet
-        records = sheet.get_all_records()
+        records = cls.sheet.get_all_records()
         # start on the second row, and delete one more than the number of records (to account for header row)
-        return sheet.delete_rows(start_index=2, end_index=len(records)+1)
+        return cls.sheet.delete_rows(start_index=2, end_index=len(records)+1)
 
     @classmethod
     def where(cls, **kwargs):
         """Filter records which match all provided values."""
-        sheet = cls.sheet
-        records = sheet.get_all_records()
+        records = cls.sheet.get_all_records()
         objs = []
         for attrs in records:
             obj = cls(attrs)
 
-            #for k,v in kwargs.items():
-            #    if getattr(obj, k) == v:
-            #        objs.append(obj)
-
-            #match_all_conditions = all(dict(obj).get(k) == v for k, v in kwargs.items())
             match_all = all(getattr(obj, k) == v for k, v in kwargs.items())
 
             if match_all:
@@ -159,10 +150,7 @@ class BaseModel:
         """Appends new records (list of dictionaries) to the sheet.
             Adds auto-incrementing unique identifiers, and timestamp columns.
         """
-        sheet = cls.sheet
-
         records = records or cls.all()
-        #next_row_number = len(records) + 2 # plus headers plus one
 
         # auto-increment integer identifier:
         if any(records):
@@ -176,14 +164,12 @@ class BaseModel:
             attrs["id"] = next_id
             now = cls.service.generate_timestamp()
             attrs["created_at"] = now
-            #attrs["updated_at"] = now
 
             inst = cls(attrs)
             rows.append(inst.row)
             next_id += 1
 
-        #return sheet.insert_rows(rows, row=next_row_number)
-        return sheet.append_rows(rows)
+        return cls.sheet.append_rows(rows)
 
     @classmethod
     def create(cls, new_record:dict):
