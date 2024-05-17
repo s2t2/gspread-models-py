@@ -16,6 +16,7 @@ Follow the [Google Cloud Setup Guide](/docs/GOOGLE_CLOUD.md) to setup a Google C
 
 Follow the [Google Sheets Setup Guide](/docs/GOOGLE_SHEETS.md) to setup a Google Sheet document and share editor access with your service account. Note the identifier of this document (i.e. the `document_id`).
 
+
 ## Quick Start
 
 **Step 1:** Bind the base model to your spreadsheet document and your credentials:
@@ -47,6 +48,13 @@ class Product(BaseModel):
 > NOTE: The metadata columns `id` and `created_at` are included in the sheet (as the first, and last, columns respectively), but they are not listed in the model-specific `COLUMNS` because they are managed automatically by the base model.
 
 
+## Authentication
+
+To authenticate to Google APIs, when creating a new instance of the `SpreadsheetService`, you can use either a local credentials JSON file, or a credentials object.
+
+  + A) If using a local credentials JSON file, pass the string filepath as the `credentials_filepath` parameter. See the Quickstart Guide for an example of authenticating using the filepath option.
+  + B) Otherwise if using a credentials (`google.auth.Credentials`) object, pass it as the `credentials` parameter. See the Demo Notebook for an example of authenticating in Google Colab using a credentials object.
+
 ## Usage Examples
 
 Here are additional usage examples:
@@ -57,12 +65,7 @@ Here are additional usage examples:
 
   + Web Application: [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
 
-### Authentication
-
-To authenticate to Google APIs, when creating a new instance of the `SpreadsheetService`, you can use either a local credentials JSON file, or a credentials object.
-
-  + A) If using a local credentials JSON file, pass the string filepath as the `credentials_filepath` parameter. See the Quickstart Guide for an example of authenticating using the filepath option.
-  + B) Otherwise if using a credentials (`google.auth.Credentials`) object, pass it as the `credentials` parameter. See the Demo Notebook for an example of authenticating in Google Colab using a credentials object.
+Feel free to open a new issue or pull request to add your own example(s) to this list.
 
 
 ## API
