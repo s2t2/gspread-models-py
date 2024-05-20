@@ -170,8 +170,7 @@ Otherwise if using a credentials object (google.auth.Credentials), pass it as th
 SpreadsheetService(creds="...", document_id="...")
 ```
 
-See the [Demo Notebook](/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating in Google Colab using a credentials object.
-
+See the [Demo Notebook](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_Package_Demo_v1_0_5.ipynb) for an example of authenticating in Google Colab using a credentials object.
 
 ## Model File Organization
 
