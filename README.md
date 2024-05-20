@@ -1,6 +1,6 @@
 # gspread-models-py
 
-Model based ORM interface into Google Sheets, using the `gspread` package.
+Model based ORM interface into Google Sheets. Read and write data to and from Google Sheets using a high-level class-based interface. This package is built on top of the awesome `gspread` package.
 
 ## Installation
 
@@ -149,7 +149,7 @@ Otherwise if using a credentials object (google.auth.Credentials), pass it as th
 SpreadsheetService(credentials="...", document_id="...")
 ```
 
-See the [Demo Notebook](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating in Google Colab using a credentials object.
+[See](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb) the [Demo Notebook](/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating in Google Colab using a credentials object.
 
 
 ## Model File Organization
