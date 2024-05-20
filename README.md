@@ -1,7 +1,7 @@
-# gspread-models-py
+# gspread-models
 
 
-The [`gspread_models`](https://github.com/s2t2/gspread-models-py) package is an Object Relational Mapper (ORM) for the Google Sheets API. It provides a straightforward and intuitive model-based query interface, making it easy to interact with Google Sheets as if it were more like a database. This package offers a fast and flexible way to get up and running with a Google Sheets database, for rapid prototyping and development in Python.
+The [`gspread-models`](https://github.com/s2t2/gspread-models-py) package is an Object Relational Mapper (ORM) for the Google Sheets API. It provides a straightforward and intuitive model-based query interface, making it easy to interact with Google Sheets as if it were more like a database. This package offers a fast and flexible way to get up and running with a Google Sheets database, for rapid prototyping and development in Python.
 
 Key Features:
 
@@ -164,10 +164,10 @@ SpreadsheetService(credentials_filepath="...", document_id="...")
 
 **B) Credentials Object**
 
-Otherwise if using a credentials object (google.auth.Credentials), pass it as the `credentials` parameter:
+Otherwise if using a credentials object (google.auth.Credentials), pass it as the `creds` parameter:
 
 ```py
-SpreadsheetService(credentials="...", document_id="...")
+SpreadsheetService(creds="...", document_id="...")
 ```
 
 [See](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb) the [Demo Notebook](/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating in Google Colab using a credentials object.
