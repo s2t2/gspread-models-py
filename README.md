@@ -50,17 +50,19 @@ class Book(BaseModel):
 
 ```
 
-When defining your class, specify a `SHEET_NAME` as well as a list of `COLUMNS` in the sheet.
+When defining your class, specify a `SHEET_NAME` as well as a list of sheet-specific `COLUMNS`.
 
 **Step 3:** Setup a corresponding sheet for this model.
 
-For the example above example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at" (in this specific order). In addition to the sheet-specific attributes of "title", "author", and "year", the base model will manage a unique identifier "id" (always the first column in the sheet) as well as a timestamp "created_at" (always the last column in the sheet).
+For the example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at".
+
+In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage a unique identifier ("id") as well as a timestamp ("created_at").
 
 
 
 ## Query Interface
 
-The base model provides an intuitive query interface for any child class that inherits from it.
+Classes that inherit from the base model will have access to an in intuitive query interface.
 
 ### Creating Records
 
@@ -98,7 +100,12 @@ books = Book.all()
 print(len(books)) #> 13
 
 for book in books:
-    print(book.id, book.title, book.author)
+    print(book.id, "|", book.title, "|", book.author)
+
+#> 1 | My Book | Me
+#> ...
+#> 12 | Harry Potter and the Philosopher's Stone | J.K. Rowling
+#> 13 | Harry Potter and the Chamber of Secrets | J.K. Rowling
 ```
 
 ### Finding a Record
