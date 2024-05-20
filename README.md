@@ -133,33 +133,23 @@ This operation leaves the column headers intact.
 
 When creating a new instance of the `SpreadsheetService`, in order to authenticate to Google APIs, you can use either a service account credentials JSON file, or a credentials object.
 
-### A) Credentials Filepath
+**A) Credentials Filepath**
 
 If using a service account credentials JSON file, pass the string filepath as the `credentials_filepath` parameter:
 
 ```py
-BaseModel.service = SpreadsheetService(
-    credentials_filepath="/path/to/google-credentials.json",
-    document_id="your-document-id"
-)
+SpreadsheetService(credentials_filepath="...", document_id="...")
 ```
 
-### B) Credentials Object
+**B) Credentials Object**
 
-Otherwise if using a credentials object, for example in Google Colab, pass it as the `credentials` parameter:
+Otherwise if using a credentials object (google.auth.Credentials), pass it as the `credentials` parameter:
 
 ```py
-from google.colab import auth
-auth.authenticate_user()
-
-from google.auth import default
-creds, _ = default()
-print(type(creds)) #> google.auth.Credentials
-
-SpreadsheetService(credentials=creds, document_id="...")
+SpreadsheetService(credentials="...", document_id="...")
 ```
 
-See the [Demo Notebook](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating using a credentials object in Google Colab.
+See the [Demo Notebook](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating in Google Colab using a credentials object.
 
 
 ## Model File Organization
@@ -168,11 +158,13 @@ If you are developing locally and would like to split up all models into their o
 
 Project file structure:
 
-   - project_dir
-     - db.py
-     - models
-       - order.py
-       - product.py
+```
+- project_dir/
+  - db.py
+  - models/
+    - order.py
+    - product.py
+```
 
 File contents:
 
@@ -198,7 +190,6 @@ class Product(BaseModel):
     SHEET_NAME = "products"
 
     COLUMNS = ["name", "description", "price", "image_url"]
-
 ```
 
 ```py
@@ -210,9 +201,7 @@ class Order(BaseModel):
 
     SHEET_NAME = "orders"
 
-    COLUMNS = ["customer_email", "product_id", "unit_price", "quantity", "subtotal", "tax", "total"]
-
-
+    COLUMNS = ["customer_email", "product_id", "unit_price", "quantity"]
 ```
 
 See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024) for an example implementation of models split across multiple files.
