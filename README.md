@@ -19,8 +19,8 @@ from gspread_models.base import BaseModel
 from gspread_models.service import SpreadsheetService
 
 BaseModel.service = SpreadsheetService(
-  document_id="your-document-id",
-  credentials_filepath="/path/to/google-credentials.json"
+    document_id="your-document-id",
+    credentials_filepath="/path/to/google-credentials.json"
 )
 ```
 
@@ -36,11 +36,11 @@ class Book(BaseModel):
 
 ```
 
-In addition to the book-specific attributes of "title", "author", and "year", the base model will manage a unique identifier "id" (always the first column in the sheet) as well as a timestamp "created_at" (always the last column in the sheet).
+When defining your class, specify a `SHEET_NAME` as well as a list of `COLUMNS` in the sheet.
 
 **Step 3:** Setup a corresponding sheet for this model.
 
-For the example above example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at" (in this specific order).
+For the example above example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at" (in this specific order). In addition to the sheet-specific attributes of "title", "author", and "year", the base model will manage a unique identifier "id" (always the first column in the sheet) as well as a timestamp "created_at" (always the last column in the sheet).
 
 
 
@@ -50,7 +50,7 @@ The base model provides an intuitive query interface for any child class that in
 
 ### Creating Records
 
-Creating and persisting a new record:
+Creating and persisting a new record (i.e. writing data to the sheet):
 
 ```py
 Book.create({"title": "My Book", "author": "Me", "year": 2050})
@@ -131,21 +131,18 @@ This operation leaves the column headers intact.
 
 ## Authentication
 
-When creating a new instance of the `SpreadsheetService`, you can use either a local credentials JSON file, or a credentials object, to authenticate to Google APIs.
+When creating a new instance of the `SpreadsheetService`, in order to authenticate to Google APIs, you can use either a service account credentials JSON file, or a credentials object.
 
 ### A) Credentials Filepath
 
 If using a service account credentials JSON file, pass the string filepath as the `credentials_filepath` parameter:
 
 ```py
-SpreadsheetService(credentials_filepath="/path/to/google-credentials.json", document_id="...")
+BaseModel.service = SpreadsheetService(
+    credentials_filepath="/path/to/google-credentials.json",
+    document_id="your-document-id"
+)
 ```
-
-If you are new to using service accounts:
-
-   + Follow the [Google Cloud Setup Guide](/docs/GOOGLE_CLOUD.md) to setup a Google Cloud project with a service account access to the Google Sheets API, obtain a service account credentials JSON file, and note the path to this file (i.e. the `credentials_filepath`).
-  + Follow the [Google Sheets Setup Guide](/docs/GOOGLE_SHEETS.md) to setup a Google Sheet document and share editor access with your service account. Note the identifier of this document (i.e. the `document_id`).
-
 
 ### B) Credentials Object
 
@@ -162,23 +159,68 @@ print(type(creds)) #> google.auth.Credentials
 SpreadsheetService(credentials=creds, document_id="...")
 ```
 
-See the Demo Notebook for an example of authenticating in Google Colab using a credentials object.
+See the [Demo Notebook](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating using a credentials object in Google Colab.
 
 
-## Usage Examples
+## Model File Organization
 
-Here are additional usage examples:
+If you are developing locally and would like to split up all models into their own files, you are recommended to adopt an approach similar to the following, where all models inherit from the base model after it has been configured.
 
-  + Local Development: [`Book` class](/test/models/book.py) and [`Book` tests](test/models_test.py)
+Project file structure:
 
-  + Notebook (Google Colab): [Demo Notebook](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb)
+   - project_dir
+     - db.py
+     - models
+       - order.py
+       - product.py
 
-  + Web Application (Flask): [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
+File contents:
+
+```py
+# this is the "db.py" file...
+
+from gspread_models.service import SpreadsheetService
+from gspread_models.base import BaseModel
+
+BaseModel.service = SpreadsheetService(
+    credentials_filepath="/path/to/google-credentials.json",
+    document_id="your-document-id"
+)
+```
+
+```py
+# this is the "models/product.py" file...
+
+from project.db import BaseModel
+
+class Product(BaseModel):
+
+    SHEET_NAME = "products"
+
+    COLUMNS = ["name", "description", "price", "image_url"]
+
+```
+
+```py
+# this is the "models/order.py" file...
+
+from project.db import BaseModel
+
+class Order(BaseModel):
+
+    SHEET_NAME = "orders"
+
+    COLUMNS = ["customer_email", "product_id", "unit_price", "quantity", "subtotal", "tax", "total"]
 
 
-To add your own example(s) to this list, feel free to open a new issue or pull request.
+```
+
+See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024) for an example implementation of models split across multiple files.
+
 
 
 ## [Contributing](/.github/CONTRIBUTING.md)
+
+Contributions welcome! Feel free to open an issue and/or submit a pull request.
 
 ## [License](/LICENSE)
