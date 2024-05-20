@@ -62,7 +62,7 @@ For the example above, create a sheet called "books", and specify an initial row
 
 ## Query Interface
 
-Classes that inherit from the base model will have access to an in intuitive query interface.
+Classes that inherit from the base model will have access to an intuitive query interface.
 
 ### Creating Records
 
