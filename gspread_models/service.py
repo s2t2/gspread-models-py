@@ -5,7 +5,7 @@ from typing import List
 from functools import cached_property
 
 from dotenv import load_dotenv
-from gspread import service_account, authorize, Worksheet
+from gspread import service_account, authorize, Worksheet, Spreadsheet
 from gspread.exceptions import WorksheetNotFound #, SpreadsheetNotFound
 
 from gspread_models.date_parser import DateParser
@@ -41,9 +41,9 @@ class SpreadsheetService(DateParser):
         print("DOCUMENT ID:", self.document_id)
 
     @cached_property
-    def doc(self):
-        """Get the given document. NOTE: this will make an API call."""
-        return self.client.open_by_key(self.document_id) #> <class 'gspread.models.Spreadsheet'>
+    def doc(self) -> Spreadsheet:
+        """Get the given document."""
+        return self.client.open_by_key(self.document_id)
 
     @property
     def sheets(self) -> List[Worksheet]:

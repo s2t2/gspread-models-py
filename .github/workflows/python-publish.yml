@@ -28,17 +28,17 @@ jobs:
       with:
         python-version: '3.x'
 
-    # Install pandoc, like brew install pandoc
-    # for markdown to RST conversion (see setup.py file)
-    # https://github.com/pandoc/actions/tree/main/setup
-    - name: Install
-      uses: pandoc/actions/setup@main
-      with:
-        version: 2.19
-
-    # pandoc test
-    - name: Run pandoc
-      run: pandoc --version
+    ## Install pandoc, like brew install pandoc
+    ## for markdown to RST conversion (see setup.py file)
+    ## https://github.com/pandoc/actions/tree/main/setup
+    #- name: Install
+    #  uses: pandoc/actions/setup@main
+    #  with:
+    #    version: 2.19
+    #
+    ## pandoc test
+    #- name: Run pandoc
+    #  run: pandoc --version
 
     # Prep python environment and build the package
     - name: Install dependencies
