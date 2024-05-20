@@ -8,7 +8,7 @@ Key Features:
  + **Read and Write Data:** Seamlessly read and write data to and from Google Sheets.
  + **Easy Setup:** Minimal schema requirements make it simple to get started.
  + **Intuitive Query Interface:** Familiar object-oriented query methods inspired by ActiveRecord (Ruby) and SQLAlchemy (Python).
- + **Auto-incrementing ID**: Automatically manages an "id" primary key column.
+ + **Auto-incrementing ID**: Automatically manages a primary key "id" column.
  + **Timestamps**: Automatically manages a "created_at" timestamp column.
  + **Datetime Handling**: Converts datetime columns to Python datetime objects for easier manipulation.
  + **Flexible Migrations**: Easily update the schema by modifying your Google Sheet and updating the corresponding list of columns.
@@ -56,7 +56,7 @@ When defining your class, specify a `SHEET_NAME` as well as a list of sheet-spec
 
 For the example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at".
 
-In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage a unique identifier ("id") as well as a timestamp ("created_at").
+> NOTE: In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
 
 
 
@@ -170,7 +170,7 @@ Otherwise if using a credentials object (google.auth.Credentials), pass it as th
 SpreadsheetService(creds="...", document_id="...")
 ```
 
-[See](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_package_demo_v102.ipynb) the [Demo Notebook](/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating in Google Colab using a credentials object.
+See the [Demo Notebook](/notebooks/gspread_models_package_demo_v102.ipynb) for an example of authenticating in Google Colab using a credentials object.
 
 
 ## Model File Organization
