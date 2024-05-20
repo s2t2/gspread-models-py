@@ -14,7 +14,7 @@ setup(
     version=VERSION,
     author="Michael Rossetti",
     author_email="datacreativellc@gmail.com",
-    description="Model based ORM interface into Google Sheets. Read and write data to and from Google Sheets using a high-level class-based interface. This package is built on top of the awesome `gspread` package.",
+    description="An Object Relational Mapper (ORM) for the Google Sheets API. Provides a straightforward and intuitive model-based query interface, making it easy to interact with Google Sheets as if it were more like a database. Offers a fast and flexible way to get up and running with a Google Sheets database, for rapid prototyping and development in Python.",
     long_description=long_description,
     long_description_content_type="text/markdown", # required if using a md file for long desc
     license="MIT",

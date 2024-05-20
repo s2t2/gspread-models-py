@@ -1,6 +1,19 @@
 # gspread-models-py
 
-Model based ORM interface into Google Sheets. Read and write data to and from Google Sheets using a high-level class-based interface. This package is built on top of the awesome `gspread` package.
+
+The [`gspread_models`](https://github.com/s2t2/gspread-models-py) package is an Object Relational Mapper (ORM) for the Google Sheets API. It provides a straightforward and intuitive model-based query interface, making it easy to interact with Google Sheets as if it were more like a database. This package offers a fast and flexible way to get up and running with a Google Sheets database, for rapid prototyping and development in Python.
+
+Key Features:
+
+ + **Read and Write Data:** Seamlessly read and write data to and from Google Sheets.
+ + **Easy Setup:** Minimal schema requirements make it simple to get started.
+ + **Intuitive Query Interface:** Familiar object-oriented query methods inspired by ActiveRecord (Ruby) and SQLAlchemy (Python).
+ + **Auto-incrementing ID**: Automatically manages an "id" primary key column.
+ + **Timestamps**: Automatically manages a "created_at" timestamp column.
+ + **Datetime Handling**: Converts datetime columns to Python datetime objects for easier manipulation.
+ + **Flexible Migrations**: Easily update the schema by modifying your Google Sheet and updating the corresponding list of columns.
+
+
 
 ## Installation
 
@@ -9,6 +22,7 @@ Install this package from PyPI:
 ```sh
 pip install gspread_models
 ```
+
 
 ## Quick Start
 
@@ -211,5 +225,9 @@ See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-te
 ## [Contributing](/.github/CONTRIBUTING.md)
 
 Contributions welcome! Feel free to open an issue and/or submit a pull request.
+
+## Acknowlegements
+
+This package is built on top of the awesome [`gspread`](https://github.com/burnash/gspread) package.
 
 ## [License](/LICENSE)
