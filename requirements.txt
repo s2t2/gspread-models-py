@@ -15,5 +15,5 @@ pytest
 
 # releasing:
 # pypandoc requires `brew install pandoc`
-pypandoc
+#pypandoc
 # twine

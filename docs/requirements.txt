@@ -1,0 +1,6 @@
+
+
+# USE JUPYTER BOOK TO BUILD THE BOOK
+# https://jupyterbook.org/en/stable/start/overview.html
+
+jupyter-book
