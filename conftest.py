@@ -21,7 +21,6 @@ CI_ENV = bool(os.getenv("CI", default="false").lower() == "true")
 #CI_SKIP_MESSAGE = "taking a lighter touch to testing on the CI server, to reduce API usage and prevent rate limits"
 
 
-
 @pytest.fixture()
 def service():
     """Spreadsheet service connected to the test document. Sleeps to avoid rate limits."""
