@@ -239,3 +239,5 @@ Contributions welcome! Feel free to open an issue and/or submit a pull request.
 This package is built on top of the awesome [`gspread`](https://github.com/burnash/gspread) package.
 
 ## [License](/LICENSE)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
