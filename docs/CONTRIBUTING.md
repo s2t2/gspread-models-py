@@ -1,6 +1,8 @@
 
 # Contributor's Guide
 
+Contributions are welcome. Follow this guide if you would like to get setup as a project contributor or maintainer.
+
 ## Setup
 
 ### Services Setup
