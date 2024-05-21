@@ -29,13 +29,3 @@ We want to give the token project-level access only, so first create a project:
   + https://pypi.org/manage/account/publishing
 
 Then when you generate the token, give it access to this project only.
-
-#### Pandoc Conversion
-
-The setup.py file governs the package information. Because PyPI doesn't display the markdown links properly, we are using pandoc to convert the markdown to RST.
-
-If you want to release or test pandoc conversion locally, first install pandoc:
-
-```sh
-brew install pandoc
-```

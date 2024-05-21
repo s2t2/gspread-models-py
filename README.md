@@ -1,5 +1,6 @@
 # gspread-models
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/b15f7f0acee92c24a7bc/maintainability)](https://codeclimate.com/github/s2t2/gspread-models-py/maintainability)
 
 The [`gspread-models`](https://github.com/s2t2/gspread-models-py) package is an Object Relational Mapper (ORM) for the Google Sheets API. It provides a straightforward and intuitive model-based query interface, making it easy to interact with Google Sheets as if it were more like a database. This package offers a fast and flexible way to get up and running with a Google Sheets database, for rapid prototyping and development in Python.
 
@@ -17,11 +18,12 @@ Key Features:
 
 ## Installation
 
-Install this package from PyPI:
+Install the package from PyPI:
 
 ```sh
 pip install gspread_models
 ```
+
 
 
 ## Quick Start
@@ -164,13 +166,13 @@ SpreadsheetService(credentials_filepath="...", document_id="...")
 
 **B) Credentials Object**
 
-Otherwise if using a credentials object (google.auth.Credentials), pass it as the `creds` parameter:
+Otherwise if using a credentials object (google.auth.Credentials), pass it as the `credentials` parameter:
 
 ```py
-SpreadsheetService(creds="...", document_id="...")
+SpreadsheetService(credentials="...", document_id="...")
 ```
 
-See the [Demo Notebook](https://nbviewer.org/github/s2t2/gspread-models-py/blob/main/notebooks/gspread_models_Package_Demo_v1_0_5.ipynb) for an example of authenticating in Google Colab using a credentials object.
+See the [Demo Notebook](https://colab.research.google.com/drive/19hMHayokPtpJkLgCsWXZLV3FsGF7gvU6?usp=sharing) for an example of authenticating in Google Colab using a credentials object.
 
 ## Model File Organization
 
@@ -228,7 +230,7 @@ See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-te
 
 
 
-## [Contributing](/.github/CONTRIBUTING.md)
+## [Contributing](/docs/CONTRIBUTING.md)
 
 Contributions welcome! Feel free to open an issue and/or submit a pull request.
 
@@ -237,3 +239,5 @@ Contributions welcome! Feel free to open an issue and/or submit a pull request.
 This package is built on top of the awesome [`gspread`](https://github.com/burnash/gspread) package.
 
 ## [License](/LICENSE)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
