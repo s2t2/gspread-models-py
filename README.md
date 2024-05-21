@@ -18,11 +18,12 @@ Key Features:
 
 ## Installation
 
-Install this package from PyPI:
+Install the package from PyPI:
 
 ```sh
 pip install gspread_models
 ```
+
 
 
 ## Quick Start
@@ -229,7 +230,7 @@ See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-te
 
 
 
-## [Contributing](/.github/CONTRIBUTING.md)
+## [Contributing](/docs/CONTRIBUTING.md)
 
 Contributions welcome! Feel free to open an issue and/or submit a pull request.
 

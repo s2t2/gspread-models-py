@@ -50,3 +50,18 @@ For testing on CI (skips some requests):
 ```sh
 CI=true pytest
 ```
+
+## Pre-Release Testing
+
+
+Installing from GitHub source:
+
+```sh
+pip install git+https://github.com/s2t2/gspread-models-py.git
+```
+
+Create a new notebook and install from GitHub source to verify everything works, before creating a release.
+
+## Releasing
+
+See the [GitHub Actions guide](/docs/GITHUB_ACTIONS.md) for information about the package deployment process.
