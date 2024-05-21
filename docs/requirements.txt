@@ -4,3 +4,6 @@
 # https://jupyterbook.org/en/stable/start/overview.html
 
 jupyter-book
+
+# for building with --builder pdfhtml
+pyppeteer

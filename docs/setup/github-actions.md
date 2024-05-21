@@ -33,6 +33,14 @@ Then when you generate the token, give it access to this project only.
 ### 3. Docs Site Deployment
 
 
-The "docs-deploy.yml" [configuration file](../../.github/workflows/docs-deploy.yml) triggers an update of the documentation site hosted on GitHub pages.
+The ["docs-deploy.yml"](../../.github/workflows/docs-deploy.yml) configuration file triggers an update of the documentation site hosted on GitHub pages.
 
 To make it work for the first time, configure github pages deploy from github actions in the repository settings.
+
+
+
+# Referencing Custom Variables
+
+This is an example of using a custom variable: {config[custom.my_variable]}.
+
+Here is another custom value: {config[custom.another_variable]}.

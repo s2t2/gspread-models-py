@@ -10,13 +10,9 @@ chapters:
 - file: organization
 - file: notebooks/demo_v1_0_5
 
-- file: setup/index
-  title: "Setup"
-  sections:
-    - file: setup/google-cloud
-    - file: setup/google-sheets
-
 - file: CONTRIBUTING
   title: "Contributing"
   sections:
+    - file: setup/google-cloud
+    - file: setup/google-sheets
     - file: setup/github-actions

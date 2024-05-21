@@ -12,8 +12,3 @@ gspread >= 6.0.2
 
 # testing:
 pytest
-
-# releasing:
-# pypandoc requires `brew install pandoc`
-#pypandoc
-# twine

@@ -8,6 +8,10 @@ only_build_toc_files: true
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 #exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 
+custom:
+  my_variable: "This is my custom variable"
+  another_variable: "Another custom value"
+
 # Define behavior for execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
@@ -24,7 +28,7 @@ html:
   #use_multitoc_numbering    : true
   #extra_footer              : ""  # Will be displayed underneath the footer.
   #google_analytics_id       : ""  # A GA id that can be used to track book views.
-  home_page_in_navbar: false  # Whether to include your home page in the left Navigation Bar
+  home_page_in_navbar: true  # Whether to include your home page in the left Navigation Bar
   #baseurl: ""  # The base URL where your book will be hosted.
   #comments:
   #  hypothesis              : false

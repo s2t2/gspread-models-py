@@ -57,11 +57,6 @@ To support the example above, create a sheet called "books", and specify an init
 
 > NOTE: In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
 
-## Setup
-
-  + [Google Cloud Setup Guide](./setup/google-cloud.md)
-  + [Google Sheets Setup Guide](./setup/google-sheets.md)
-
 ## Usage
 
   + [Authentication](./authentication.md)
@@ -79,4 +74,6 @@ To add example projects to this list, submit a pull request or create an issue w
 ## Contributing
 
   + [Contributor's Guide](./CONTRIBUTING.md)
-  + [GitHub Actions Setup Guide](./setup/github-actions.md)
+    + [Google Cloud Setup Guide](./setup/google-cloud.md)
+    + [Google Sheets Setup Guide](./setup/google-sheets.md)
+    + [GitHub Actions Setup Guide](./setup/github-actions.md)
