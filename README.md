@@ -18,16 +18,11 @@ Key Features:
 
 ## Installation
 
-Install the package:
+Install the package from PyPI:
 
 ```sh
-# from PyPI:
 pip install gspread_models
-
-# or from GitHub source:
-# pip install git+https://github.com/s2t2/gspread-models-py.git
 ```
-
 
 ## Quick Start
 
