@@ -1,5 +1,6 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
+# See https://jupyterbook.org/en/stable/customize/config.html#configuration-defaults
 
 title: gspread-models documentation site
 author: Michael Rossetti
@@ -7,10 +8,6 @@ logo: logo.png
 only_build_toc_files: true
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 #exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
-
-custom:
-  my_variable: "This is my custom variable"
-  another_variable: "Another custom value"
 
 # Define behavior for execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -22,6 +19,7 @@ execute:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
+  favicon: "favicon.ico"
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true

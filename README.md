@@ -1,6 +1,7 @@
 # gspread-models
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/b15f7f0acee92c24a7bc/maintainability)](https://codeclimate.com/github/s2t2/gspread-models-py/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b15f7f0acee92c24a7bc/maintainability)](https://codeclimate.com/github/s2t2/gspread-models-py/maintainability) ![continuous integration](https://github.com/s2t2/gspread-models-py/actions/workflows/python-app.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 
 The [`gspread-models`](https://github.com/s2t2/gspread-models-py) package is an Object Relational Mapper (ORM) for the Google Sheets API. It provides a straightforward and intuitive model-based query interface, making it easy to interact with Google Sheets as if it were more like a database. This package offers a fast and flexible way to get up and running with a Google Sheets database, for rapid prototyping and development in Python.
 
@@ -48,7 +49,6 @@ class Book(BaseModel):
     SHEET_NAME = "books"
 
     COLUMNS = ["title", "author", "year"]
-
 ```
 
 When defining your class, specify a `SHEET_NAME` as well as a list of sheet-specific `COLUMNS`.
@@ -57,7 +57,7 @@ When defining your class, specify a `SHEET_NAME` as well as a list of sheet-spec
 
 To support the example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at".
 
-> NOTE: In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
+In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
 
 ### Usage
 
@@ -115,7 +115,4 @@ Contributions welcome! Here are some reference guides to help you get started as
 
 This package is built on top of the awesome [`gspread`](https://github.com/burnash/gspread) package.
 
-
 ## [License](/LICENSE)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
