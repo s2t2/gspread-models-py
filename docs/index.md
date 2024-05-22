@@ -95,11 +95,12 @@ For more details, see the usage documentation below:
 
 ## Examples
 
+Here are some examples that demonstrate the usage of `gspread-models` within a variety of contexts:
+
   + [Demo Notebook](./notebooks/demo_v1_0_5.ipynb)
   + [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
 
-If you use the gspread-models package, you are encouraged to add your project to this list, by submitting a pull request or opening an issue.
-
+If you use the `gspread-models` package, you are encouraged to add your project to this list, by submitting a pull request or opening an issue.
 
 ## Contributing
 
