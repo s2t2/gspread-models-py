@@ -15,7 +15,6 @@ Key Features:
  + **Flexible Migrations**: Easily update the schema by modifying your Google Sheet and updating the corresponding list of columns.
 
 
-
 ## Installation
 
 Install the package from PyPI:
@@ -25,10 +24,11 @@ pip install gspread_models
 ```
 
 
-
 ## Quick Start
 
-**Step 1:** Bind the base model to your spreadsheet document and your credentials (see "Authentication" for more details):
+### Setup
+
+**Step 1:** Bind the base model to your Google Sheets document and your credentials (see [Authentication](./docs/authentication.md) for more details):
 
 ```py
 from gspread_models.base import BaseModel
@@ -43,7 +43,6 @@ BaseModel.service = SpreadsheetService(
 **Step 2:** Define your own light-weight class that inherits from the base model:
 
 ```python
-
 class Book(BaseModel):
 
     SHEET_NAME = "books"
@@ -56,187 +55,66 @@ When defining your class, specify a `SHEET_NAME` as well as a list of sheet-spec
 
 **Step 3:** Setup a corresponding sheet for this model.
 
-For the example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at".
+To support the example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at".
 
 > NOTE: In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
 
+### Usage
 
+Once you have your model class setup, you can utilize the [Query Interface](./docs/queries.md), to read and write data to the sheet.
 
-## Query Interface
-
-Classes that inherit from the base model will have access to an intuitive query interface.
-
-### Creating Records
-
-Creating and persisting a new record (i.e. writing data to the sheet):
-
-```py
-Book.create({"title": "My Book", "author": "Me", "year": 2050})
-```
-
-Creating multiple records at once:
+Writing / appending records to the sheet:
 
 ```py
 Book.create_all([
-    {"title": "To Kill a Mockingbird", "author": "Harper Lee", "year": 1960},
-    {"title": "1984", "author": "George Orwell", "year": 1949},
     {"title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "year": 1925},
-    {"title": "The Catcher in the Rye", "author": "J.D. Salinger", "year": 1951},
-    {"title": "Pride and Prejudice", "author": "Jane Austen", "year": 1813},
-    {"title": "To the Lighthouse", "author": "Virginia Woolf", "year": 1927},
-    {"title": "The Hobbit", "author": "J.R.R. Tolkien", "year": 1937},
-    {"title": "Moby-Dick", "author": "Herman Melville", "year": 1851},
-    {"title": "Brave New World", "author": "Aldous Huxley", "year": 1932},
-    {"title": "Alice's Adventures in Wonderland", "author": "Lewis Carroll", "year": 1865},
     {"title": "Harry Potter and the Philosopher's Stone", "author": "J.K. Rowling", "year": 1997},
     {"title": "Harry Potter and the Chamber of Secrets", "author": "J.K. Rowling", "year": 1998},
 ])
 ```
 
-### Listing Records
-
 Fetching all records from the sheet:
 
 ```py
 books = Book.all()
-print(len(books)) #> 13
+print(len(books)) #> 3
 
 for book in books:
     print(book.id, "|", book.title, "|", book.author)
 
-#> 1 | My Book | Me
-#> ...
-#> 12 | Harry Potter and the Philosopher's Stone | J.K. Rowling
-#> 13 | Harry Potter and the Chamber of Secrets | J.K. Rowling
+#> 1 | The Great Gatsby | F. Scott Fitzgerald
+#> 2 | Harry Potter and the Philosopher's Stone | J.K. Rowling
+#> 3 | Harry Potter and the Chamber of Secrets | J.K. Rowling
 ```
 
-### Finding a Record
+For more details, see the usage documentation below:
 
-Find a specific record, given its unique identifier:
+  + [Query Interface](./docs/queries.md)
+  + [Authentication](./docs/authentication.md)
+  + [Project File Organization](./docs/organization.md)
 
-```py
-book = Book.find(4)
+## Examples
 
-print(book.id) #> 4
-print(book.title) #> "The Great Gatsby"
-print(book.author) #> "F. Scott Fitzgerald"
-print(book.year) #> 1925
-print(book.created_at) #> datetime object
-```
+Here are some examples that demonstrate the usage of `gspread-models` within a variety of contexts:
 
-### Filtering Records
+  + [Demo Notebook](./docs/notebooks/demo_v1_0_5.ipynb)
+  + [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
 
-Filter records based on matching conditions (returns records that match ALL criteria):
+If you use the `gspread-models` package, you are encouraged to add your project to this list, by submitting a pull request or opening an issue.
 
-```py
-books = Book.where(author="J.K. Rowling")
-print(len(books)) #> 2
-```
+## Contributing
 
-```py
-books = Book.where(title="The Great Gatsby", year=2020)
-print(len(books)) #> 0
-```
+Contributions welcome! Here are some reference guides to help you get started as a contributor or maintainer of this package:
 
-### Destroying Records
-
-Clear the sheet by removing all records:
-
-```py
-Book.destroy_all()
-```
-
-This operation leaves the column headers intact.
-
-
-
-
-
-## Authentication
-
-When creating a new instance of the `SpreadsheetService`, in order to authenticate to Google APIs, you can use either a service account credentials JSON file, or a credentials object.
-
-**A) Credentials Filepath**
-
-If using a service account credentials JSON file, pass the string filepath as the `credentials_filepath` parameter:
-
-```py
-SpreadsheetService(credentials_filepath="...", document_id="...")
-```
-
-**B) Credentials Object**
-
-Otherwise if using a credentials object (google.auth.Credentials), pass it as the `credentials` parameter:
-
-```py
-SpreadsheetService(credentials="...", document_id="...")
-```
-
-See the [Demo Notebook](https://colab.research.google.com/drive/19hMHayokPtpJkLgCsWXZLV3FsGF7gvU6?usp=sharing) for an example of authenticating in Google Colab using a credentials object.
-
-## Model File Organization
-
-If you are developing locally and would like to split up all models into their own files, you are recommended to adopt an approach similar to the following, where all models inherit from the base model after it has been configured.
-
-Project file structure:
-
-```
-- project_dir/
-  - db.py
-  - models/
-    - order.py
-    - product.py
-```
-
-File contents:
-
-```py
-# this is the "db.py" file...
-
-from gspread_models.service import SpreadsheetService
-from gspread_models.base import BaseModel
-
-BaseModel.service = SpreadsheetService(
-    credentials_filepath="/path/to/google-credentials.json",
-    document_id="your-document-id"
-)
-```
-
-```py
-# this is the "models/product.py" file...
-
-from project.db import BaseModel
-
-class Product(BaseModel):
-
-    SHEET_NAME = "products"
-
-    COLUMNS = ["name", "description", "price", "image_url"]
-```
-
-```py
-# this is the "models/order.py" file...
-
-from project.db import BaseModel
-
-class Order(BaseModel):
-
-    SHEET_NAME = "orders"
-
-    COLUMNS = ["customer_email", "product_id", "unit_price", "quantity"]
-```
-
-See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024) for an example implementation of models split across multiple files.
-
-
-
-## [Contributing](/docs/CONTRIBUTING.md)
-
-Contributions welcome! Feel free to open an issue and/or submit a pull request.
+  + [Contributor's Guide](./docs/CONTRIBUTING.md)
+    + [Google Cloud Setup Guide](./docs/setup/google-cloud.md)
+    + [Google Sheets Setup Guide](./docs/setup/google-sheets.md)
+    + [GitHub Actions Setup Guide](./docs/setup/github-actions.md)
 
 ## Acknowlegements
 
 This package is built on top of the awesome [`gspread`](https://github.com/burnash/gspread) package.
+
 
 ## [License](/LICENSE)
 

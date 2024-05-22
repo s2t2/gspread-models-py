@@ -110,3 +110,7 @@ Contributions welcome! Here are some reference guides to help you get started as
     + [Google Cloud Setup Guide](./setup/google-cloud.md)
     + [Google Sheets Setup Guide](./setup/google-sheets.md)
     + [GitHub Actions Setup Guide](./setup/github-actions.md)
+
+## Acknowlegements
+
+This package is built on top of the awesome [`gspread`](https://github.com/burnash/gspread) package.
