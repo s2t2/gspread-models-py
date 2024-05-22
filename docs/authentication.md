@@ -24,4 +24,4 @@ Otherwise if using a credentials object (google.auth.Credentials), pass it as th
 SpreadsheetService(credentials="...", document_id="...")
 ```
 
-See the [Demo Notebook](https://colab.research.google.com/drive/19hMHayokPtpJkLgCsWXZLV3FsGF7gvU6?usp=sharing) for an example of authenticating in Google Colab using a credentials object.
+See the [Demo Notebook](./notebooks/demo_v1_0_5.ipynb) for an example of authenticating in Google Colab using a credentials object.

@@ -26,6 +26,8 @@ pip install gspread_models
 
 ## Quick Start
 
+### Setup
+
 **Step 1:** Bind the base model to your Google Sheets document and your credentials (see [Authentication](./authentication.md) for more details):
 
 ```py
@@ -57,11 +59,38 @@ To support the example above, create a sheet called "books", and specify an init
 
 > NOTE: In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
 
+### Usage
 
-## Usage
+Once you have your model class setup, you can utilize the [Query Interface](./queries.md), to read and write data to the sheet.
 
-  + [Authentication](./authentication.md)
+Writing / appending records to the sheet:
+
+```py
+Book.create_all([
+    {"title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "year": 1925},
+    {"title": "Harry Potter and the Philosopher's Stone", "author": "J.K. Rowling", "year": 1997},
+    {"title": "Harry Potter and the Chamber of Secrets", "author": "J.K. Rowling", "year": 1998},
+])
+```
+
+Fetching all records from the sheet:
+
+```py
+books = Book.all()
+print(len(books)) #> 3
+
+for book in books:
+    print(book.id, "|", book.title, "|", book.author)
+
+#> 1 | The Great Gatsby | F. Scott Fitzgerald
+#> 2 | Harry Potter and the Philosopher's Stone | J.K. Rowling
+#> 3 | Harry Potter and the Chamber of Secrets | J.K. Rowling
+```
+
+For more details, see the usage documentation below:
+
   + [Query Interface](./queries.md)
+  + [Authentication](./authentication.md)
   + [Project File Organization](./organization.md)
 
 ## Examples
@@ -69,10 +98,12 @@ To support the example above, create a sheet called "books", and specify an init
   + [Demo Notebook](./notebooks/demo_v1_0_5.ipynb)
   + [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
 
-To add example projects to this list, submit a pull request or create an issue with your project name and url(s).
+If you use the gspread-models package, you are encouraged to add your project to this list, by submitting a pull request or opening an issue.
 
 
 ## Contributing
+
+Contributions welcome! Here are some reference guides to help you get started as a contributor or maintainer of this package:
 
   + [Contributor's Guide](./CONTRIBUTING.md)
     + [Google Cloud Setup Guide](./setup/google-cloud.md)

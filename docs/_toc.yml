@@ -20,8 +20,8 @@ parts:
 
 - caption: Usage
   chapters:
-  - file: authentication
   - file: queries
+  - file: authentication
   - file: organization
 
 - caption: Examples
