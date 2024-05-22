@@ -2,7 +2,6 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b15f7f0acee92c24a7bc/maintainability)](https://codeclimate.com/github/s2t2/gspread-models-py/maintainability) ![continuous integration](https://github.com/s2t2/gspread-models-py/actions/workflows/python-app.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-
 The [`gspread-models`](https://github.com/s2t2/gspread-models-py) package is an Object Relational Mapper (ORM) for the Google Sheets API. It provides a straightforward and intuitive model-based query interface, making it easy to interact with Google Sheets as if it were more like a database. This package offers a fast and flexible way to get up and running with a Google Sheets database, for rapid prototyping and development in Python.
 
 Key Features:
@@ -24,11 +23,12 @@ Install the package from PyPI:
 pip install gspread_models
 ```
 
+
 ## Quick Start
 
 ### Setup
 
-**Step 1:** Bind the base model to your Google Sheets document and your credentials (see [Authentication](./docs/authentication.md) for more details):
+**Step 1:** Bind the base model to your Google Sheets document and your credentials (see [Authentication](./authentication.md) for more details):
 
 ```py
 from gspread_models.base import BaseModel
@@ -56,11 +56,13 @@ When defining your class, specify a `SHEET_NAME` as well as a list of sheet-spec
 
 To support the example above, create a sheet called "books", and specify an initial row of column headers: "id", "title", "author", "year", and "created_at".
 
-> NOTE: In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
+```{note}
+In addition to the sheet-specific attributes ("title", "author", and "year"), the base model will manage metadata columns, including a unique identifier ("id") as well as a timestamp ("created_at").
+```
 
 ### Usage
 
-Once you have your model class setup, you can utilize the [Query Interface](./docs/queries.md), to read and write data to the sheet.
+Once you have your model class setup, you can utilize the [Query Interface](./queries.md), to read and write data to the sheet.
 
 Writing / appending records to the sheet:
 
@@ -88,15 +90,15 @@ for book in books:
 
 For more details, see the usage documentation below:
 
-  + [Query Interface](./docs/queries.md)
-  + [Authentication](./docs/authentication.md)
-  + [Project File Organization](./docs/organization.md)
+  + [Query Interface](./queries.md)
+  + [Authentication](./authentication.md)
+  + [Project File Organization](./organization.md)
 
 ## Examples
 
 Here are some examples that demonstrate the usage of `gspread-models` within a variety of contexts:
 
-  + [Demo Notebook](./docs/notebooks/demo_v1_0_5.ipynb)
+  + [Demo Notebook](./notebooks/demo_v1_0_5.ipynb)
   + [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
 
 If you use the `gspread-models` package, you are encouraged to add your project to this list, by submitting a pull request or opening an issue.
@@ -105,13 +107,11 @@ If you use the `gspread-models` package, you are encouraged to add your project 
 
 Contributions welcome! Here are some reference guides to help you get started as a contributor or maintainer of this package:
 
-  + [Contributor's Guide](./docs/CONTRIBUTING.md)
-    + [Google Cloud Setup Guide](./docs/setup/google-cloud.md)
-    + [Google Sheets Setup Guide](./docs/setup/google-sheets.md)
-    + [GitHub Actions Setup Guide](./docs/setup/github-actions.md)
+  + [Contributor's Guide](./CONTRIBUTING.md)
+    + [Google Cloud Setup Guide](./setup/google-cloud.md)
+    + [Google Sheets Setup Guide](./setup/google-sheets.md)
+    + [GitHub Actions Setup Guide](./setup/github-actions.md)
 
 ## Acknowlegements
 
 This package is built on top of the awesome [`gspread`](https://github.com/burnash/gspread) package.
-
-## [License](/LICENSE)

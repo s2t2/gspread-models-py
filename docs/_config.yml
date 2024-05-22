@@ -1,0 +1,53 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+# See https://jupyterbook.org/en/stable/customize/config.html#configuration-defaults
+
+title: gspread-models documentation site
+author: Michael Rossetti
+logo: logo.png
+only_build_toc_files: true
+# Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+#exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+
+# Define behavior for execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  #execute_notebooks: force
+  execute_notebooks: off # off because we can't run some colab features, so they will display their most recent output
+  #exclude_patterns: [pattern1/*, path/to/myfile.ipynb]
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  favicon: "favicon.ico"
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: true
+  #use_multitoc_numbering    : true
+  #extra_footer              : ""  # Will be displayed underneath the footer.
+  #google_analytics_id       : ""  # A GA id that can be used to track book views.
+  home_page_in_navbar: true  # Whether to include your home page in the left Navigation Bar
+  #baseurl: ""  # The base URL where your book will be hosted.
+  #comments:
+  #  hypothesis              : false
+  #  utterances              : false
+  #announcement: "This is an exciting announcement" # A banner announcement at the top of the site.
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+#bibtex_bibfiles:
+#  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/s2t2/gspread-models-py  # Online location of your book
+  path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
+
+#sphinx:
+#  config:
+#    nb_execution_show_tb: True
