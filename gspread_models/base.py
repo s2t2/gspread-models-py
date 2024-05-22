@@ -6,6 +6,7 @@ from datetime import datetime
 
 from gspread import Worksheet #, Spreadsheet
 #from gspread_models.service import SpreadsheetService
+#from pandas import DataFrame
 
 
 class BaseModel:
@@ -118,10 +119,25 @@ class BaseModel:
         return None
 
     @classmethod
-    def all(cls):
+    def all(cls): # as_df=False
         """Fetches all records from a given sheet."""
         records = cls.sheet.get_all_records()
+        # we can consider passing the data back in dataframe format:
+        # see: https://github.com/s2t2/gspread-models-py/issues/12
+        #if as_df:
+        #    #df = DataFrame(records)
+        #    # use model conversion to take advantage of datetime-conversion, etc:
+        #    df = DataFrame([dict(cls(record)) for record in records])
+        #    df.index = df["id"]
+        #    return df
+        #else:
+        #    return [cls(record) for record in records]
         return [cls(record) for record in records]
+
+    #@classmethod
+    #def find_all(cls):
+    #    """alias method"""
+    #    return cls.all()
 
     @classmethod
     def destroy_all(cls):

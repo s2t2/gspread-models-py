@@ -20,6 +20,9 @@ setup(
     license="MIT",
     url="https://github.com/s2t2/gspread-models-py",
     keywords="google sheets gspread models orm spreadsheet google-sheets google-sheets-api gspread-models gspread_models",
-    install_requires=["python-dotenv", "gspread>=6.0.2"],  # install_requires
+    install_requires=["python-dotenv", "gspread>=6.0.2"],
+    #extras_require={
+    #    'pandas': ['pandas>=2.2.0']
+    #}, # pip install gspread-models[pandas]
     packages=["gspread_models"], # find_packages()
 )

@@ -86,11 +86,28 @@ for book in books:
 #> 3 | Harry Potter and the Chamber of Secrets | J.K. Rowling
 ```
 
+It is easy to create a pandas DataFrame from the returned objects by converting each to a dictionary:
+
+```py
+from pandas import DataFrame
+
+books_df = DataFrame([dict(book) for book in books])
+books_df.head()
+
+#> id title                   author              year  created_at
+#> 1  To Kill a Mockingbird   Harper Lee          1960  2024-05-22 21:36:25.582605+00:00
+#> 2  1984                    George Orwell       1949  2024-05-22 21:36:25.582738+00:00
+#> 3  The Great Gatsby        F. Scott Fitzgerald 1925  2024-05-22 21:36:25.582778+00:00
+#> 4  The Catcher in the Rye  J.D. Salinger       1951  2024-05-22 21:36:25.582813+00:00
+#> 5  Pride and Prejudice     Jane Austen         1813  2024-05-22 21:36:25.582846+00:00
+```
+
 For more details, see the usage documentation below:
 
   + [Query Interface](./docs/queries.md)
   + [Authentication](./docs/authentication.md)
   + [Project File Organization](./docs/organization.md)
+  + [Pandas Support](./docs/pandas_support.md)
 
 ## Examples
 

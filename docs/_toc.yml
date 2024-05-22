@@ -23,6 +23,7 @@ parts:
   - file: queries
   - file: authentication
   - file: organization
+  - file: pandas_support
 
 - caption: Examples
   chapters:

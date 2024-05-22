@@ -7,7 +7,8 @@ from datetime import datetime
 #import pytest
 
 from gspread import Worksheet
-from gspread_models.base import BaseModel
+#from gspread_models.base import BaseModel
+#from pandas import DataFrame
 
 from conftest import GOOGLE_SHEETS_TEST_DOCUMENT_ID #, CI_ENV, CI_SKIP_MESSAGE
 from test.models.book import Book
@@ -50,6 +51,11 @@ def test_child_model(model_context):
     # FIND ALL:
     books = Book.all()
     assert len(books) == 12
+
+    #books_df = Book.all(as_df=True)
+    #assert isinstance(books_df, DataFrame)
+    #assert len(books_df) == 12
+    #assert books_df.columns.tolist() == ["id", "title", "author", "year", "created_at"]
 
     # CREATE:
     # given a dictionary of compatible attributes:

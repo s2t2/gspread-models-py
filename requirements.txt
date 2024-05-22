@@ -10,5 +10,8 @@ gspread >= 6.0.2
 #google-auth==2.28.2
 #google-auth-oauthlib==1.2.0
 
+# for returning results as pandas dataframe:
+#pandas >= 2.2.2
+
 # testing:
 pytest
