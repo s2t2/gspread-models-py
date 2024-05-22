@@ -1,22 +1,26 @@
 
-# Model File Organization
+# Project Organization
 
 If you are developing locally and would like to split up all models into their own files, you are recommended to adopt an approach similar to the following, where all models inherit from the base model after it has been configured.
 
-Project file structure:
+## Project Structure
+
+Example project file structure:
 
 ```
-- project_dir/
+- my_project/
   - db.py
   - models/
     - order.py
     - product.py
 ```
 
-File contents:
+## File Contents
+
+Example \"db.py" file contents:
 
 ```py
-# this is the "db.py" file...
+# this is the "my_project/db.py" file...
 
 from gspread_models.service import SpreadsheetService
 from gspread_models.base import BaseModel
@@ -25,12 +29,16 @@ BaseModel.service = SpreadsheetService(
     credentials_filepath="/path/to/google-credentials.json",
     document_id="your-document-id"
 )
+
+# now you can import the base model from here, and child model classes will use the configured document
 ```
 
-```py
-# this is the "models/product.py" file...
+Example \"product.py" file contents:
 
-from project.db import BaseModel
+```py
+# this is the "my_project/models/product.py" file...
+
+from my_project.db import BaseModel
 
 class Product(BaseModel):
 
@@ -39,10 +47,12 @@ class Product(BaseModel):
     COLUMNS = ["name", "description", "price", "image_url"]
 ```
 
-```py
-# this is the "models/order.py" file...
+Example \"order.py" file contents:
 
-from project.db import BaseModel
+```py
+# this is the "my_project/models/order.py" file...
+
+from my_project.db import BaseModel
 
 class Order(BaseModel):
 
@@ -51,4 +61,4 @@ class Order(BaseModel):
     COLUMNS = ["customer_email", "product_id", "unit_price", "quantity"]
 ```
 
-See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024) for an example implementation of models split across multiple files.
+See the [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024/tree/main/app) for an example implementation of models split across multiple files.

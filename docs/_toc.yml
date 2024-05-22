@@ -33,7 +33,7 @@ parts:
 - caption: Contributing
   chapters:
     - file: CONTRIBUTING
-    - file: setup/index
+    #- file: setup/index
       sections:
       - file: setup/google-cloud
       - file: setup/google-sheets

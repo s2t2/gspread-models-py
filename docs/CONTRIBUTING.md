@@ -52,20 +52,19 @@ For testing on CI (skips some requests):
 CI=true pytest
 ```
 
+
 ## Pre-Release Testing
 
 
-Installing from GitHub source:
+Before creating a release, create a new notebook and install the package from GitHub source and verify everything is working as desired:
 
 ```sh
 pip install git+https://github.com/s2t2/gspread-models-py.git
 ```
 
-Create a new notebook and install from GitHub source to verify everything works, before creating a release.
-
 ## Releasing
 
-See the [GitHub Actions guide](./setup/github-actions.md) for information about the package deployment process.
+See the [GitHub Actions Guide](./setup/github-actions.md) for more information about the package release workflow.
 
 
 ## Documentation Site
@@ -93,5 +92,7 @@ Building pdf:
 ```sh
 jupyter-book build docs/ --builder pdfhtml
 
-jupyter-book build docs/ --builder pdflatex
+# jupyter-book build docs/ --builder pdflatex
 ```
+
+See the [GitHub Actions Guide](./setup/github-actions.md) for information about the documentation site hosting and deployment workflow.
