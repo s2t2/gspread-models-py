@@ -31,6 +31,15 @@ parts:
   - url: https://github.com/prof-rossetti/flask-sheets-template-2024
     title: Flask Sheets Web Application Template
 
+- caption: API
+  chapters:
+    - file: example_rst
+    - file: api/index
+      sections:
+      - file: api/date_parser
+      - file: api/service
+      - file: api/base
+
 - caption: Contributing
   chapters:
     - file: CONTRIBUTING
