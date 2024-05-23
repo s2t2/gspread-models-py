@@ -79,10 +79,7 @@ Fetching all records from the sheet:
 
 ```py
 books = Book.all()
-print(len(books)) #> 5
-```
 
-```py
 for book in books:
     print(book.id, "|", book.title, "|", book.author)
 

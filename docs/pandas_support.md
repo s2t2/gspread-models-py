@@ -63,7 +63,6 @@ class MyBook(MyBaseModel):
     SHEET_NAME = "books"
 
     COLUMNS = ["title", "author", "year"]
-
 ```
 
 ```py
