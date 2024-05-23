@@ -35,7 +35,8 @@ parts:
 
 - caption: API
   chapters:
-  - file: api
+  #- file: api_rst
+  - file: apidocs/index
   #- file: api/index
   #  sections:
   #  - file: api/base

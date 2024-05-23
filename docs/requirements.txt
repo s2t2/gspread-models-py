@@ -7,3 +7,10 @@ jupyter-book
 
 # for building with --builder pdfhtml
 pyppeteer
+
+
+# for autodocumentation:
+#sphinx
+#sphinx-autodoc-typehints
+
+sphinx-autodoc2

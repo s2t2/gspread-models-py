@@ -23,7 +23,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
-  #use_multitoc_numbering    : true
+
   #extra_footer              : ""  # Will be displayed underneath the footer.
   #google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar: true  # Whether to include your home page in the left Navigation Bar
@@ -48,14 +48,73 @@ repository:
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
+
+
+
+
+#sphinx:
+#  extra_extensions:
+#    # AUTO DOCUMENTATION:
+#    # https://jupyterbook.org/en/stable/advanced/developers.html#api-reference-from-docstrings
+#    # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
+#    - 'sphinx.ext.autodoc'
+#    #- 'sphinx.ext.napoleon'
+#    #- 'sphinx.ext.viewcode'
+#  config:
+#    add_module_names: False
+#    #autosummary_generate: True
+
+#sphinx:
+#  config:
+#    extensions:
+#      - sphinx.ext.autodoc
+#      - sphinx.ext.napoleon
+#      - sphinx_autodoc_typehints
+#    napoleon_google_docstring: true
+#    napoleon_numpy_docstring: true
+#    autodoc_member_order: 'bysource'
+
+
+# Sphinx configuration
+#sphinx:
+#  extra_extensions:
+#    #- sphinx.ext.autodoc
+#    #- sphinx.ext.autosummary
+#    - sphinx_autodoc2
+#    - autodoc2
+#  config:
+#    autodoc2_packages:
+#      - ../gspread_models #
+#      #- path/to/your/python/package  # Path to the package you want to document
+#    autodoc2_index_template: |
+#      {% for module in modules %}
+#      {{ module }}
+#      {% endfor %}
+#    autodoc2_options:
+#      members: true
+#      undoc-members: true
+#      show-inheritance: true
+#
+
+
+# https://github.com/microsoft/sammo/blob/e906fed76f33248d08da21816f83e607c72fa6a2/docs/_config.yml#L42
 sphinx:
   extra_extensions:
-    # AUTO DOCUMENTATION:
-    # https://jupyterbook.org/en/stable/advanced/developers.html#api-reference-from-docstrings
-    # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
-    - 'sphinx.ext.autodoc'
-    #- 'sphinx.ext.napoleon'
-    #- 'sphinx.ext.viewcode'
+  - autodoc2
+  #local_extensions:
+  #  set_version: .
   config:
-    add_module_names: False
-    #autosummary_generate: True
+    #nb_merge_streams: true
+    #autodoc2_index_template: null
+    #autodoc2_output_dir: autodoc2_api
+    #autodoc2_module_all_regexes:
+    #  - "sammo.*(throttler|store|utils|search_op|data|compactbars|components).*"
+    autodoc2_packages:
+      - "../gspread_models"
+        auto_mode: False
+    #autodoc2_hidden_objects:
+    #  - inherited
+    #  - private
+    #  - dunder
+    #autodoc2_skip_module_regexes:
+    #  - .*test.*
