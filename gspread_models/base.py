@@ -5,7 +5,7 @@ from functools import lru_cache #,cached_property
 from datetime import datetime
 
 from gspread import Worksheet #, Spreadsheet
-#from gspread_models.service import SpreadsheetService
+from gspread_models.service import SpreadsheetService
 #from pandas import DataFrame
 
 
@@ -76,13 +76,13 @@ class BaseModel:
         #values.append(str(self.updated_at))
         return values
 
-    def save(self):
-        print("SAVING RECORD TO SHEET:")
-        print(dict(self))
-        #if self.id:
-        #    self.attrs["updated_at"] = self.service.generate_timestamp()
-        #    self.update(dict(self))
-        #return self.create(dict(self))
+    #def save(self):
+    #    print("SAVING RECORD TO SHEET:")
+    #    print(dict(self))
+    #    #if self.id:
+    #    #    self.attrs["updated_at"] = self.service.generate_timestamp()
+    #    #    self.update(dict(self))
+    #    #return self.create(dict(self))
         return self.create_all([dict(self)])
 
     #
@@ -90,8 +90,16 @@ class BaseModel:
     #
 
     @classmethod
-    def set_document_id(cls, document_id):
-        cls.service.document_id = document_id
+    def bind(cls, document_id, credentials_filepath=None, credentials=None):
+        cls.service = SpreadsheetService(
+            document_id=document_id,
+            credentials_filepath=credentials_filepath,
+            credentials=credentials
+        )
+
+    #@classmethod
+    #def set_document_id(cls, document_id):
+    #    cls.service.document_id = document_id
 
     @classmethod
     def get_sheet(cls) -> Worksheet:
@@ -107,11 +115,12 @@ class BaseModel:
         """Caches the sheet to avoid unnecessary API requests."""
         return cls.get_sheet()
 
-    # ... API
+    # ... QUERY INTERFACE (API)
 
     @classmethod
     def find(cls, by_id):
-        """Fetches a record by its unique identifier."""
+        """Fetches a record by its unique identifier.
+        """
         records = cls.sheet.get_all_records()
         for record in records:
             if record.get("id") == by_id:
@@ -120,7 +129,8 @@ class BaseModel:
 
     @classmethod
     def all(cls): # as_df=False
-        """Fetches all records from a given sheet."""
+        """Fetches all records from a given sheet.
+        """
         records = cls.sheet.get_all_records()
         # we can consider passing the data back in dataframe format:
         # see: https://github.com/s2t2/gspread-models-py/issues/12
@@ -196,4 +206,5 @@ class BaseModel:
 
     @classmethod
     def seed(cls):
+        """Convenience method, if you would like to set SEEDS."""
         return cls.create_all(new_records=cls.SEEDS)

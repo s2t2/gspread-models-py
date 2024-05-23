@@ -15,7 +15,6 @@ Key Features:
  + **Datetime Handling**: Converts datetime columns to Python datetime objects for easier manipulation.
  + **Flexible Migrations**: Easily update the schema by modifying your Google Sheet and updating the corresponding list of columns.
 
-
 ## Installation
 
 Install the package from PyPI:
