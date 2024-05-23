@@ -48,6 +48,14 @@ repository:
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
-#sphinx:
-#  config:
-#    nb_execution_show_tb: True
+sphinx:
+  extra_extensions:
+    # AUTO DOCUMENTATION:
+    # https://jupyterbook.org/en/stable/advanced/developers.html#api-reference-from-docstrings
+    # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
+    - 'sphinx.ext.autodoc'
+    #- 'sphinx.ext.napoleon'
+    #- 'sphinx.ext.viewcode'
+  config:
+    add_module_names: False
+    #autosummary_generate: True

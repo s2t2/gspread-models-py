@@ -9,6 +9,8 @@ from gspread_models.service import SpreadsheetService
 #from pandas import DataFrame
 
 
+
+
 class BaseModel:
 
     SHEET_NAME = None # abstract constant (str) to be set in child class
