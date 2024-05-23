@@ -5,8 +5,10 @@ from time import sleep
 
 from dotenv import load_dotenv
 
-from gspread_models.service import SpreadsheetService
+from google.oauth2 import service_account
+from gspread_models.service import SpreadsheetService, GOOGLE_CREDENTIALS_FILEPATH
 from gspread_models.base import BaseModel
+
 
 load_dotenv()
 
@@ -19,6 +21,16 @@ TEST_SLEEP = int(os.getenv("TEST_SLEEP", default="3")) # maybe not necessary? / 
 # for skipping tests on CI:
 CI_ENV = bool(os.getenv("CI", default="false").lower() == "true")
 #CI_SKIP_MESSAGE = "taking a lighter touch to testing on the CI server, to reduce API usage and prevent rate limits"
+
+
+@pytest.fixture()
+def creds():
+    """Credentials object, using the service account JSON file"""
+    # https://googleapis.dev/python/google-auth/latest/user-guide.html#obtaining-credentials
+    SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+    creds = service_account.Credentials.from_service_account_file(GOOGLE_CREDENTIALS_FILEPATH)
+    creds = creds.with_scopes(SCOPES)
+    return creds
 
 
 @pytest.fixture()

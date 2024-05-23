@@ -15,7 +15,6 @@ Key Features:
  + **Datetime Handling**: Converts datetime columns to Python datetime objects for easier manipulation.
  + **Flexible Migrations**: Easily update the schema by modifying your Google Sheet and updating the corresponding list of columns.
 
-
 ## Installation
 
 Install the package from PyPI:
@@ -32,9 +31,8 @@ pip install gspread_models
 
 ```py
 from gspread_models.base import BaseModel
-from gspread_models.service import SpreadsheetService
 
-BaseModel.service = SpreadsheetService(
+BaseModel.bind(
     document_id="your-document-id",
     credentials_filepath="/path/to/google-credentials.json"
 )
@@ -60,15 +58,17 @@ To support the example above, create a sheet called "books", and specify an init
 
 ### Usage
 
-Once you have your model class setup, you can utilize the [Query Interface](./docs/queries.md), to read and write data to the sheet.
+Once you have your model class setup, you can utilize the [Query Interface](./queries.md), to read and write data to the sheet.
 
 Writing / appending records to the sheet:
 
 ```py
 Book.create_all([
+    {"title": "To Kill a Mockingbird", "author": "Harper Lee", "year": 1960},
+    {"title": "1984", "author": "George Orwell", "year": 1949},
     {"title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "year": 1925},
-    {"title": "Harry Potter and the Philosopher's Stone", "author": "J.K. Rowling", "year": 1997},
-    {"title": "Harry Potter and the Chamber of Secrets", "author": "J.K. Rowling", "year": 1998},
+    {"title": "The Catcher in the Rye", "author": "J.D. Salinger", "year": 1951},
+    {"title": "Pride and Prejudice", "author": "Jane Austen", "year": 1813},
 ])
 ```
 
@@ -76,14 +76,15 @@ Fetching all records from the sheet:
 
 ```py
 books = Book.all()
-print(len(books)) #> 3
 
 for book in books:
     print(book.id, "|", book.title, "|", book.author)
 
-#> 1 | The Great Gatsby | F. Scott Fitzgerald
-#> 2 | Harry Potter and the Philosopher's Stone | J.K. Rowling
-#> 3 | Harry Potter and the Chamber of Secrets | J.K. Rowling
+#> 1 | To Kill a Mockingbird | Harper Lee
+#> 2 | 1984 | George Orwell
+#> 3 | The Great Gatsby | F. Scott Fitzgerald
+#> 4 | The Catcher in the Rye | J.D. Salinger
+#> 5 | Pride and Prejudice | Jane Austen
 ```
 
 It is easy to create a pandas DataFrame from the returned objects by converting each to a dictionary:
@@ -113,8 +114,8 @@ For more details, see the usage documentation below:
 
 Here are some examples that demonstrate the usage of `gspread-models` within a variety of contexts:
 
-  + [Demo Notebook](./docs/notebooks/demo_v1_0_5.ipynb)
-  + [Flask Sheets Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
+  + [Demo Notebook](./docs/notebooks/demo_v1_0_6.ipynb)
+  + [Flask Sheets Web Application Template](https://github.com/prof-rossetti/flask-sheets-template-2024)
 
 If you use the `gspread-models` package, you are encouraged to add your project to this list, by submitting a pull request or opening an issue.
 

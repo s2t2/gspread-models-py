@@ -32,7 +32,6 @@ books_df.head()
 If you would like to integrate pandas DataFrame functionality into your child classes, you can leverage inheritence to overwrite the `all()` method of the base model, to optionally return data in DataFrame format:
 
 ```py
-
 from pandas import DataFrame
 
 class MyBaseModel(BaseModel):
@@ -54,7 +53,8 @@ class MyBaseModel(BaseModel):
             return [cls(record) for record in records]
 
 
-MyBaseModel.service = service
+#MyBaseModel.service = service
+MyBaseModel.bind(credentials_filepath="...", document_id="...")
 ```
 
 ```py
@@ -63,7 +63,6 @@ class MyBook(MyBaseModel):
     SHEET_NAME = "books"
 
     COLUMNS = ["title", "author", "year"]
-
 ```
 
 ```py
