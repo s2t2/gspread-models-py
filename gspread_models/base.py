@@ -90,11 +90,12 @@ class BaseModel:
     #
 
     @classmethod
-    def bind(cls, document_id, credentials_filepath=None, credentials=None):
+    def bind(cls, document_id, credentials_filepath=None, credentials=None, creds=None):
         cls.service = SpreadsheetService(
             document_id=document_id,
             credentials_filepath=credentials_filepath,
-            credentials=credentials
+            credentials=credentials,
+            creds=creds
         )
 
     #@classmethod
