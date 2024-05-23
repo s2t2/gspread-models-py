@@ -32,9 +32,8 @@ pip install gspread_models
 
 ```py
 from gspread_models.base import BaseModel
-from gspread_models.service import SpreadsheetService
 
-BaseModel.service = SpreadsheetService(
+BaseModel.bind(
     document_id="your-document-id",
     credentials_filepath="/path/to/google-credentials.json"
 )
@@ -68,9 +67,11 @@ Writing / appending records to the sheet:
 
 ```py
 Book.create_all([
+    {"title": "To Kill a Mockingbird", "author": "Harper Lee", "year": 1960},
+    {"title": "1984", "author": "George Orwell", "year": 1949},
     {"title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "year": 1925},
-    {"title": "Harry Potter and the Philosopher's Stone", "author": "J.K. Rowling", "year": 1997},
-    {"title": "Harry Potter and the Chamber of Secrets", "author": "J.K. Rowling", "year": 1998},
+    {"title": "The Catcher in the Rye", "author": "J.D. Salinger", "year": 1951},
+    {"title": "Pride and Prejudice", "author": "Jane Austen", "year": 1813},
 ])
 ```
 
@@ -78,14 +79,18 @@ Fetching all records from the sheet:
 
 ```py
 books = Book.all()
-print(len(books)) #> 3
+print(len(books)) #> 5
+```
 
+```py
 for book in books:
     print(book.id, "|", book.title, "|", book.author)
 
-#> 1 | The Great Gatsby | F. Scott Fitzgerald
-#> 2 | Harry Potter and the Philosopher's Stone | J.K. Rowling
-#> 3 | Harry Potter and the Chamber of Secrets | J.K. Rowling
+#> 1 | To Kill a Mockingbird | Harper Lee
+#> 2 | 1984 | George Orwell
+#> 3 | The Great Gatsby | F. Scott Fitzgerald
+#> 4 | The Catcher in the Rye | J.D. Salinger
+#> 5 | Pride and Prejudice | Jane Austen
 ```
 
 It is easy to create a pandas DataFrame from the returned objects by converting each to a dictionary:
@@ -94,6 +99,10 @@ It is easy to create a pandas DataFrame from the returned objects by converting 
 from pandas import DataFrame
 
 books_df = DataFrame([dict(book) for book in books])
+print(len(books_df)) #> 3
+```
+
+```py
 books_df.head()
 
 #> id title                   author              year  created_at

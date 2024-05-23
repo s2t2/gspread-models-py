@@ -37,11 +37,14 @@ Fetching all records from the sheet:
 ```py
 books = Book.all()
 print(len(books)) #> 13
+```
 
+```py
 for book in books:
     print(book.id, "|", book.title, "|", book.author)
 
 #> 1 | My Book | Me
+#> 2 | To Kill a Mockingbird | Harper Lee
 #> ...
 #> 12 | Harry Potter and the Philosopher's Stone | J.K. Rowling
 #> 13 | Harry Potter and the Chamber of Secrets | J.K. Rowling

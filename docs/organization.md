@@ -22,15 +22,15 @@ Example \"db.py" file contents:
 ```py
 # this is the "my_project/db.py" file...
 
-from gspread_models.service import SpreadsheetService
 from gspread_models.base import BaseModel
 
-BaseModel.service = SpreadsheetService(
+BaseModel.bind(
     credentials_filepath="/path/to/google-credentials.json",
     document_id="your-document-id"
 )
 
-# now you can import the base model from here, and child model classes will use the configured document
+# now you can import the base model from here,
+# ... and child model classes will use the configured document and credentials
 ```
 
 Example \"product.py" file contents:
