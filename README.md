@@ -96,10 +96,6 @@ It is easy to create a pandas DataFrame from the returned objects by converting 
 from pandas import DataFrame
 
 books_df = DataFrame([dict(book) for book in books])
-print(len(books_df)) #> 3
-```
-
-```py
 books_df.head()
 
 #> id title                   author              year  created_at
