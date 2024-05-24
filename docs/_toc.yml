@@ -33,12 +33,15 @@ parts:
 
 - caption: API
   chapters:
-    - file: example_rst
+    #- file: example_rst
     - file: api/index
-      sections:
-      - file: api/date_parser
-      - file: api/service
-      - file: api/base
+      # turning off sections in sidebar nav, because of toctree on index causes duplicate sidebar nav links
+      #sections:
+      #- file: api/date_parser
+      #- file: api/service
+      #- file: api/base
+      ##options:
+      ##  titlesonly: true
 
 - caption: Contributing
   chapters:

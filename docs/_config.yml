@@ -5,7 +5,7 @@
 title: gspread-models documentation site
 author: Michael Rossetti
 logo: logo.png
-only_build_toc_files: true
+only_build_toc_files: false
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 #exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 
@@ -57,6 +57,7 @@ sphinx:
     # AUTO DOCUMENTATION:
     # https://jupyterbook.org/en/stable/advanced/developers.html#api-reference-from-docstrings
     # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
+    # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration
     - 'sphinx.ext.autodoc'
     #- 'sphinx.ext.napoleon'
     #- 'sphinx.ext.viewcode'

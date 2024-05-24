@@ -1,10 +1,21 @@
 
-
+.. _api_index:
 
 API Documentation
 ==================
 
-.. Table of Contents:
+
+.. commented section:
+..
+   + See the `BaseModel <base.html>`_
+   + See the `DateParser <date_parser.html>`_
+   + See the `SpreadsheetService <service.html>`_
+
+
+
+
+.. commented directive:
+..
 
 .. toctree::
    :maxdepth: 3
@@ -15,11 +26,23 @@ API Documentation
 
 
 
+
+
 .. Links:
-..
-.. + `BaseModel <base.html>`_
-.. + `DateParser <date_parser.html>`_
-.. + `SpreadsheetService <service.html>`_
+
+
+.. + See the `BaseModel <base.html>`_
+.. + See the `DateParser <date_parser.html>`_
+.. + See the `SpreadsheetService <service.html>`_
+
+
+
+
+
+
+
+
+
 
 
 .. Cool stuff:
@@ -27,3 +50,12 @@ API Documentation
 .. + :ref:`genindex`
 .. + :ref:`modindex`
 .. + :ref:`search`
+
+..
+.. .. autosummary
+..     :nosignatures:
+..
+..     gspread_models.base
+..     gspread_models.service
+..     gspread_models.date_parser
+..

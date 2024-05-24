@@ -3,8 +3,6 @@
 Base Model
 ===========
 
-Auto Module:
---------------
 
 .. automodule:: gspread_models.base
    :members:
@@ -12,7 +10,12 @@ Auto Module:
    :show-inheritance:
 
 
-Auto Class:
---------------
 
-.. autoclass:: gspread_models.base.BaseModel
+
+.. Auto Class:
+.. --------------
+..
+.. .. autoclass:: gspread_models.base.BaseModel
+..    :members:
+..    :undoc-members:
+..    :show-inheritance:
