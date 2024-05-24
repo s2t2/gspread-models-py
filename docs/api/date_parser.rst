@@ -1,4 +1,8 @@
 
+
+.. _api_date_parser:
+
+
 Date Parser
 ===============
 
@@ -6,7 +10,7 @@ Date Parser
 .. automodule:: gspread_models.date_parser
    :members:
    :undoc-members:
-   :show-inheritance:
+..  :show-inheritance:
 
 
 .. .. autoclass:: gspread_models.date_parser.DateParser

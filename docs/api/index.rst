@@ -4,18 +4,10 @@
 API Documentation
 ==================
 
+.. toctree provides a table of contents for each of the specified python files
+.. note: this also adds nav links to the left sidebar
+.. see: https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
 
-.. commented section:
-..
-   + See the `BaseModel <base.html>`_
-   + See the `DateParser <date_parser.html>`_
-   + See the `SpreadsheetService <service.html>`_
-
-
-
-
-.. commented directive:
-..
 
 .. toctree::
    :maxdepth: 3
@@ -27,13 +19,6 @@ API Documentation
 
 
 
-
-.. Links:
-
-
-.. + See the `BaseModel <base.html>`_
-.. + See the `DateParser <date_parser.html>`_
-.. + See the `SpreadsheetService <service.html>`_
 
 
 

@@ -1,6 +1,7 @@
 
+.. _api_service:
 
-Service
+Spreadsheet Service
 =========
 
 
@@ -15,3 +16,6 @@ Service
 ..    :undoc-members:
 ..    :show-inheritance:
 ..
+
+
+Return to the :ref:`api_index`.

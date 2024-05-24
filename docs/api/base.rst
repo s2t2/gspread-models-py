@@ -1,21 +1,35 @@
 
+.. _api_base:
 
 Base Model
 ===========
 
-
 .. automodule:: gspread_models.base
    :members:
    :undoc-members:
-   :show-inheritance:
+..   :show-inheritance:
 
 
-
-
-.. Auto Class:
-.. --------------
+.. Instance Methods
+.. -----------------
 ..
 .. .. autoclass:: gspread_models.base.BaseModel
-..    :members:
-..    :undoc-members:
-..    :show-inheritance:
+..    :members: __init__, __iter__, created_at, row
+..
+..
+.. Class Methods
+.. -----------------
+..
+.. .. autoclass:: gspread_models.base.BaseModel
+..    :members: bind, get_sheet, sheet
+..
+.. Query Interface
+.. ~~~~~~~~~~~~~~~~~
+..
+..
+.. .. autoclass:: gspread_models.base.BaseModel
+..    :members: all, find, where, create, create_all, destroy_all
+..
+
+
+Return to the :ref:`api_index`.
