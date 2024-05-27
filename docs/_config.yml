@@ -5,7 +5,7 @@
 title: gspread-models documentation site
 author: Michael Rossetti
 logo: logo.png
-only_build_toc_files: true
+only_build_toc_files: false
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 #exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 
@@ -23,7 +23,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
-  #use_multitoc_numbering    : true
+
   #extra_footer              : ""  # Will be displayed underneath the footer.
   #google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar: true  # Whether to include your home page in the left Navigation Bar
@@ -48,6 +48,19 @@ repository:
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
-#sphinx:
-#  config:
-#    nb_execution_show_tb: True
+
+
+
+
+sphinx:
+  extra_extensions:
+    # AUTO DOCUMENTATION:
+    # https://jupyterbook.org/en/stable/advanced/developers.html#api-reference-from-docstrings
+    # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
+    # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration
+    - 'sphinx.ext.autodoc'
+    #- 'sphinx.ext.napoleon'
+    #- 'sphinx.ext.viewcode'
+  #config:
+  #  add_module_names: False
+  #  #autosummary_generate: True

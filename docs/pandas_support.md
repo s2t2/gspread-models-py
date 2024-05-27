@@ -29,35 +29,29 @@ books_df.head()
 
 ## Customizing the Base Model
 
-If you would like to integrate pandas DataFrame functionality into your child classes, you can leverage inheritence to overwrite the `all()` method of the base model, to optionally return data in DataFrame format:
+It is possible to leverage inheritence to customize the behaviors of the base model, for example to create a method which returns all records in DataFrame format:
 
 ```py
+from gspread_models.base import BaseModel
 from pandas import DataFrame
 
 class MyBaseModel(BaseModel):
 
     @classmethod
-    def all(cls, as_df=False):
-        """Fetches all records from a given sheet. Overwrites parent method to optionally use a dataframe approach.
-
-            Params :
-
-                as_df (bool) : whether or not to return the data as a DataFrame
-        """
-        records = cls.sheet.get_all_records()
-        if as_df:
-            df = DataFrame([dict(cls(record)) for record in records])
-            df.index = df["id"]
-            return df
-        else:
-            return [cls(record) for record in records]
+    def records_to_df(cls):
+        objects = cls.all()
+        df = DataFrame([dict(obj) for obj in objects])
+        df.index = df["id"]
+        return df
 
 
-#MyBaseModel.service = service
 MyBaseModel.bind(credentials_filepath="...", document_id="...")
 ```
 
+This way, the child class(es) can have DataFrame support by default:
+
 ```py
+
 class MyBook(MyBaseModel):
 
     SHEET_NAME = "books"
@@ -66,7 +60,7 @@ class MyBook(MyBaseModel):
 ```
 
 ```py
-books_df = MyBook.all(as_df=True)
+books_df = MyBook.records_to_df()
 books_df.head()
 
 #> id title                   author              year  created_at
