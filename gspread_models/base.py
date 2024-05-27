@@ -10,6 +10,11 @@ from gspread_models.service import SpreadsheetService
 
 
 class BaseModel:
+    """
+    The Base Model provides an intuitive query interface to any models inheriting from it.
+    Before reading and writing data to the sheet, you must first bind the base model
+    to a specified google sheet document, using your authorized credentials.
+    """
 
     SHEET_NAME = None # abstract constant (str) to be set in child class
 
@@ -21,10 +26,8 @@ class BaseModel:
 
     def __init__(self, attrs:Dict):
         """
-        Need to set service afterwards to bind the base model (and models which inherit from it) to a given sheet.
-
-            service = SpreadsheetService() # opportunity to pass custom credentials and designate the sheet
-            BaseModel.service = service
+        Params:
+            attrs (dict) : A dictionary of attribute parameters that have been fetched from the sheet.
         """
         self.attrs = attrs
 

@@ -17,9 +17,8 @@ GOOGLE_CREDENTIALS_FILEPATH = os.getenv("GOOGLE_CREDENTIALS_FILEPATH", default=D
 GOOGLE_SHEETS_DOCUMENT_ID = os.getenv("GOOGLE_SHEETS_DOCUMENT_ID", default="OOPS, Please get the spreadsheet identifier from its URL, and set the 'GOOGLE_SHEETS_DOCUMENT_ID' environment variable accordingly...")
 
 class SpreadsheetService(DateParser):
-
-    def __init__(self, credentials_filepath=GOOGLE_CREDENTIALS_FILEPATH, document_id=GOOGLE_SHEETS_DOCUMENT_ID, creds=None, credentials=None):
-        """The Spreadsheet Service provides a connection to a specified Google Sheets document.
+    """
+        The Spreadsheet Service provides a connection to a specified Google Sheets document.
 
             Params:
 
@@ -38,14 +37,44 @@ class SpreadsheetService(DateParser):
                         creds, _ = default()
 
                         service = SpreadsheetService(creds=creds)
+
+
+
+        """
+
+    def __init__(self, document_id, credentials_filepath=None, creds=None, credentials=None):
+        """
+        The Spreadsheet Service provides a connection to a specified Google Sheets document.
+
+            Params:
+
+                credentials_filepath : path to local service account JSON file
+
+                document_id : google sheets document identifier (obtained from the URL)
+
+                creds or credentials : optionally pass credentials (google.auth.compute_engine.credentials.Credentials)
+
+                for example for use in colab notebook:
+
+                        from google.colab import auth
+                        from google.auth import default
+
+                        auth.authenticate_user()
+                        creds, _ = default()
+
+                        service = SpreadsheetService(creds=creds)
+
+
+
         """
         creds = creds or credentials
         if creds:
             self.client = authorize(creds)
         else:
+            credentials_filepath = credentials_filepath or GOOGLE_CREDENTIALS_FILEPATH
             self.client = service_account(filename=credentials_filepath)
 
-        self.document_id = document_id
+        self.document_id = document_id or GOOGLE_SHEETS_DOCUMENT_ID
 
         print("SPREADSHEET SERVICE...")
         print("DOCUMENT ID:", self.document_id)
