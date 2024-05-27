@@ -2,7 +2,7 @@
 .. _api_service:
 
 Spreadsheet Service
-=========
+======================
 
 
 .. automodule:: gspread_models.service
