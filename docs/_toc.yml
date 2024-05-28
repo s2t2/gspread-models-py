@@ -27,7 +27,7 @@ parts:
 
 - caption: Examples
   chapters:
-  - file: notebooks/demo_v1_0_6
+  - file: notebooks/demo_v1_0_7
   - url: https://github.com/prof-rossetti/flask-sheets-template-2024
     title: Flask Sheets Web Application Template
 
