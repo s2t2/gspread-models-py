@@ -1,8 +1,10 @@
 # Makefile for building Jupyter Book
 
 html:
-	jupyter-book build docs/ --builder html
+	jupyter-book build docs/ --builder html --all
 
+clean:
+	jupyter-book clean docs/ --all
 
 book_links:
 	jupyter-book build docs/ --builder linkcheck

@@ -18,3 +18,11 @@ def test_parse_timestamp():
     assert dt.minute == 59
     assert dt.second == 16
     assert dt.tzinfo == timezone.utc
+
+def test_validate_timestamp():
+    assert DateParser.validate_timestamp("2023-03-08 19:59:16.471152+00:00") == True
+    assert DateParser.validate_timestamp("2023-03-08 19:59:16.471152") == False
+    assert DateParser.validate_timestamp("2023-03-08 19:59:16+00:00") == False
+    assert DateParser.validate_timestamp("2023-03-08 19:59:16") == False
+    assert DateParser.validate_timestamp("2023-03-08") == False
+    assert DateParser.validate_timestamp("OOPS") == False
