@@ -72,14 +72,6 @@ class BaseModel(ABC):
     service = None # SpreadsheetService()
 
     def __init__(self, attrs:Dict):
-        """
-        Base Model
-
-        Parameters
-        -------------
-        attrs : (dict)
-            A dictionary of attribute values fetched from the sheet.
-        """
         self.attrs = attrs
 
         # attributes common to all child models

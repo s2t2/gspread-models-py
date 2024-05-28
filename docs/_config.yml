@@ -67,7 +67,7 @@ sphinx:
 
     # https://www.sphinx-doc.org/en/master/usage/extensions/autosummary.html
     # builds tables with method names and descriptions
-    - 'sphinx.ext.autosummary'
+    #- 'sphinx.ext.autosummary'
 
     # recognizes google and/or numpy formatted docstrings?
     - 'sphinx.ext.napoleon'
