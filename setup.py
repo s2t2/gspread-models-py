@@ -2,7 +2,8 @@
 
 from setuptools import setup
 
-from gspread_models import VERSION
+#from gspread_models import VERSION
+VERSION = "1.0.7"
 
 # FYI: PyPI doesn't display the links in this markdown
 # https://stackoverflow.com/a/26737672/670433
