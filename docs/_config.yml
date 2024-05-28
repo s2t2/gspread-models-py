@@ -75,6 +75,7 @@ sphinx:
     # recognizes google and/or numpy formatted docstrings?
     # https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html
     - 'sphinx.ext.napoleon'
+    #- 'numpydoc'
 
     # add links back to source code:
     - 'sphinx.ext.viewcode'
@@ -89,3 +90,5 @@ sphinx:
     # https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html#configuration
     napoleon_google_docstring: False
     napoleon_numpy_docstring: True
+
+    #numpydoc_validation_checks: "all"

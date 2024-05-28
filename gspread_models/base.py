@@ -162,10 +162,14 @@ class BaseModel(ABC):
         Examples
         ----------
         >>> from gspread_models.base import BaseModel
+        >>> BaseModel.service
+        None
         >>> BaseModel.bind(
         ...     credentials_filepath="google-credentials.json"
         ...     document_id="your-document-id"
         ... )
+        >>> BaseModel.service
+        SpreadsheetService object
         """
         cls.service = SpreadsheetService(
             document_id=document_id,
