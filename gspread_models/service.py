@@ -20,53 +20,31 @@ class SpreadsheetService(DateParser):
     """
     The Spreadsheet Service provides a connection to a specified Google Sheets document.
 
-        Params:
+    Parameters
+    --------------
 
-            credentials_filepath : path to local service account JSON file
+        credentials_filepath : (str)
+            path to local service account JSON file
 
-            document_id : google sheets document identifier (obtained from the URL)
+        document_id : (str)
+            google sheets document identifier (obtained from the URL)
 
-            creds or credentials : optionally pass credentials (google.auth.compute_engine.credentials.Credentials)
+        creds or credentials : (google.auth.compute_engine.credentials.Credentials)
+            optionally pass credentials object instead of filepath
 
-            for example for use in colab notebook:
+    Example (Colab Notebook)
+    -----------------------------
+    >>> from google.colab import auth
+    >>> from google.auth import default
+    >>> from gspread_models import SpreadsheetService
 
-                    from google.colab import auth
-                    from google.auth import default
-
-                    auth.authenticate_user()
-                    creds, _ = default()
-
-                    service = SpreadsheetService(creds=creds)
-
-
-
-        """
+    >>> auth.authenticate_user()
+    >>> creds, _ = default()
+    >>> service = SpreadsheetService(creds=creds, document_id="my-document-id")
+    >>> print(service.doc)
+    """
 
     def __init__(self, document_id, credentials_filepath=None, creds=None, credentials=None):
-        """
-        The Spreadsheet Service provides a connection to a specified Google Sheets document.
-
-            Params:
-
-                credentials_filepath : path to local service account JSON file
-
-                document_id : google sheets document identifier (obtained from the URL)
-
-                creds or credentials : optionally pass credentials (google.auth.compute_engine.credentials.Credentials)
-
-                for example for use in colab notebook:
-
-                        from google.colab import auth
-                        from google.auth import default
-
-                        auth.authenticate_user()
-                        creds, _ = default()
-
-                        service = SpreadsheetService(creds=creds)
-
-
-
-        """
         creds = creds or credentials
         if creds:
             self.client = authorize(creds)
@@ -81,20 +59,28 @@ class SpreadsheetService(DateParser):
 
     @cached_property
     def doc(self) -> Spreadsheet:
-        """Get the given document."""
+        """
+        Get the given document.
+        """
         return self.client.open_by_key(self.document_id)
 
     @property
     def sheets(self) -> List[Worksheet]:
-        """List all sheets in the given document."""
+        """
+        List all sheets in the given document.
+        """
         return self.doc.worksheets()
 
     def get_sheet(self, sheet_name) -> Worksheet:
-        """Get a specific sheet in the document."""
+        """
+        Get a specific sheet in the document.
+        """
         return self.doc.worksheet(sheet_name)
 
     def find_or_create_sheet(self, sheet_name) -> Worksheet:
-        """access a sheet within the document, or create if not exists"""
+        """
+        Access a sheet within the document, or create if not exists.
+        """
         try:
             sheet = self.doc.worksheet(sheet_name)
             print(f"FOUND SHEET: '{sheet_name}'")

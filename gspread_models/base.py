@@ -154,18 +154,26 @@ class BaseModel(ABC):
         Bind the base model with a given document and set of credentials to access that document.
 
         Parameters
-        ----------
+        --------------
 
-        document_id : "___________________________________________________"
+        credentials_filepath : (str)
+            path to local service account JSON file
 
-        credentials_filepath : "___________________________________________________"
+        document_id : (str)
+            google sheets document identifier (obtained from the URL)
 
-        credentials : "___________________________________________________"
+        creds or credentials : (google.auth.compute_engine.credentials.Credentials)
+            optionally pass credentials object instead of filepath
+
+
+        See Also
+        --------
+        SpreadsheetService : Uses similar credentials parameters
 
         Example
         ----------
         >>> from gspread_models.base import BaseModel
-        ... BaseModel.bind(
+        >>> BaseModel.bind(
         ...     credentials_filepath="google-credentials.json"
         ...     document_id="your-document-id"
         ... )
@@ -183,13 +191,15 @@ class BaseModel(ABC):
 
     @classmethod
     def get_sheet(cls) -> Worksheet:
-       """
-       Fetch the model-specific sheet, once it has been configured in the child class.
+        """
+        Fetch the model-specific sheet, once it has been configured in the child class.
 
-       See: BaseModel.SHEET_NAME
-       """
-       print(f"GET SHEET ('{cls.SHEET_NAME}')...")
-       return cls.service.get_sheet(sheet_name=cls.SHEET_NAME)
+        See Also
+        --------
+        BaseModel.SHEET_NAME
+        """
+        print(f"GET SHEET ('{cls.SHEET_NAME}')...")
+        return cls.service.get_sheet(sheet_name=cls.SHEET_NAME)
 
     @classmethod
     @property
