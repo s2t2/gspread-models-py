@@ -1,8 +1,8 @@
 
 
-from gspread_models.base import BaseModel
-from gspread_models.service import SpreadsheetService
-from gspread_models.date_parser import DateParser
+#from gspread_models.base import BaseModel
+#from gspread_models.service import SpreadsheetService
+#from gspread_models.date_parser import DateParser
 
 VERSION = "1.0.7"
 

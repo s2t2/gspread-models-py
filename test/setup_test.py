@@ -6,6 +6,7 @@ def test_package_version():
 
 
 
-def test_direct_imports():
-    from gspread_models import BaseModel, SpreadsheetService, DateParser
-    assert True
+#def test_direct_imports():
+#    from gspread_models import BaseModel, SpreadsheetService, DateParser
+#    assert True
+#
