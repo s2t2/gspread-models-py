@@ -18,25 +18,25 @@ GOOGLE_SHEETS_DOCUMENT_ID = os.getenv("GOOGLE_SHEETS_DOCUMENT_ID", default="OOPS
 
 class SpreadsheetService(DateParser):
     """
-        The Spreadsheet Service provides a connection to a specified Google Sheets document.
+    The Spreadsheet Service provides a connection to a specified Google Sheets document.
 
-            Params:
+        Params:
 
-                credentials_filepath : path to local service account JSON file
+            credentials_filepath : path to local service account JSON file
 
-                document_id : google sheets document identifier (obtained from the URL)
+            document_id : google sheets document identifier (obtained from the URL)
 
-                creds or credentials : optionally pass credentials (google.auth.compute_engine.credentials.Credentials)
+            creds or credentials : optionally pass credentials (google.auth.compute_engine.credentials.Credentials)
 
-                for example for use in colab notebook:
+            for example for use in colab notebook:
 
-                        from google.colab import auth
-                        from google.auth import default
+                    from google.colab import auth
+                    from google.auth import default
 
-                        auth.authenticate_user()
-                        creds, _ = default()
+                    auth.authenticate_user()
+                    creds, _ = default()
 
-                        service = SpreadsheetService(creds=creds)
+                    service = SpreadsheetService(creds=creds)
 
 
 
