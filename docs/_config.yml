@@ -83,7 +83,7 @@ sphinx:
     #add_module_names: False
     #autosummary_generate: True
     # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration
-    autoclass_content: "class" # "both" # class, init, both,
+    autoclass_content: "both" # "both" # class, init, both,
     autodoc_member_order: "groupwise" # alphabetical, bysource, groupwise
 
     # napolean config:
