@@ -1,7 +1,5 @@
 
 
-VERSION = "1.0.6"
-
 
 from gspread_models.base import BaseModel
 from gspread_models.service import SpreadsheetService
