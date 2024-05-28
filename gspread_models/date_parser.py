@@ -38,17 +38,13 @@ class DateParser:
 
         Parameters
         --------
-        ts : (str)
+        ts : str
             A timestamp string in format provided by google sheets
 
         Examples
         ---------
-        >>> DateParser.parse_timestamp('2023-03-08 19:59:16.471152+00:00')
+        DateParser.parse_timestamp('2023-03-08 19:59:16.471152+00:00')
         datetime(2023, 3, 8, 19, 59, 16, tzinfo=utc)
-
-        Returns
-        --------
-        datetime
         """
         if isinstance(ts, datetime):
             return ts
@@ -67,7 +63,7 @@ class DateParser:
         See: https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
 
         Examples
-        ---------
+        --------
         >>> DateParser.validate_timestamp('2023-03-08 19:59:16.471152+00:00')
         True
 

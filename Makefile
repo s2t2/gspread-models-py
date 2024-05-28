@@ -1,8 +1,10 @@
 # Makefile for building Jupyter Book
 
 html:
-	rm -rf docs/_build && jupyter-book build docs/ --builder html --all
+	jupyter-book build docs/ --builder html --all
 
+clean:
+	jupyter-book clean docs/ --all
 
 book_links:
 	jupyter-book build docs/ --builder linkcheck

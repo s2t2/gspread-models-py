@@ -8,7 +8,7 @@ Base Model
 .. autoclass:: gspread_models.base.BaseModel
     :members:
     :undoc-members:
-    :exclude-members: seed, SEEDS, save
+    :exclude-members: seed, SEEDS, save, service
 
 
 
