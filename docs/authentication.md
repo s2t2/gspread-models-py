@@ -28,4 +28,4 @@ Otherwise if using a credentials object (google.auth.Credentials), pass it as th
 BaseModel.bind(credentials="...", document_id="...")
 ```
 
-See the [Demo Notebook](./notebooks/demo_v1_0_6.ipynb) for an example of authenticating in Google Colab using a credentials object.
+See the [Demo Notebook](./notebooks/demo_v1_0_7.ipynb) for an example of authenticating in Google Colab using a credentials object.
