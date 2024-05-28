@@ -43,7 +43,6 @@ class BaseModel(ABC):
     ...     SHEET_NAME = "books"
     ...
     ...     COLUMNS = ["title", "author", "year"]
-    ...
 
     Constructing an object from a dictionary of values like those fetched from the sheet.
 
@@ -53,6 +52,7 @@ class BaseModel(ABC):
     ...     "author": "Me",
     ...     "created_at": ""
     ... })
+    Book
     >>> print(book.id)
     1
     >>> print(book.title)
@@ -77,7 +77,8 @@ class BaseModel(ABC):
 
         Parameters
         -------------
-        attrs : (dict) A dictionary of attribute values fetched from the sheet.
+        attrs : (dict)
+            A dictionary of attribute values fetched from the sheet.
         """
         self.attrs = attrs
 
@@ -155,22 +156,18 @@ class BaseModel(ABC):
 
         Parameters
         --------------
-
         credentials_filepath : (str)
             path to local service account JSON file
-
         document_id : (str)
             google sheets document identifier (obtained from the URL)
-
         creds or credentials : (google.auth.compute_engine.credentials.Credentials)
             optionally pass credentials object instead of filepath
-
 
         See Also
         --------
         SpreadsheetService : Uses similar credentials parameters
 
-        Example
+        Examples
         ----------
         >>> from gspread_models.base import BaseModel
         >>> BaseModel.bind(
@@ -201,6 +198,8 @@ class BaseModel(ABC):
         print(f"GET SHEET ('{cls.SHEET_NAME}')...")
         return cls.service.get_sheet(sheet_name=cls.SHEET_NAME)
 
+    # using @property + @lru_cache because @cached_property throws:
+    # ... TypeError: Cannot use cached_property instance without calling __set_name__ on it.
     @classmethod
     @property
     @lru_cache(maxsize=None)
@@ -208,8 +207,6 @@ class BaseModel(ABC):
         """
         Caches the sheet to avoid unnecessary API requests.
         """
-        # using @property + @lru_cache because @cached_property throws:
-        # ... TypeError: Cannot use cached_property instance without calling __set_name__ on it.
         return cls.get_sheet()
 
     # ... QUERY INTERFACE (API)

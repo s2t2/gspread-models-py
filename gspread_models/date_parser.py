@@ -21,6 +21,11 @@ class DateParser:
         Examples
         ---------
         >>> DateParser.generate_timestamp()
+        datetime(2023, 3, 8, 19, 59, 16, tzinfo=utc)
+
+        Returns
+        --------
+        datetime
         """
         return datetime.now(tz=timezone.utc)
 
@@ -31,13 +36,19 @@ class DateParser:
         Ensures you are working with a datetime object.
         Returns a datetime object.
 
-        Params
+        Parameters
         --------
-            ts (str) : a timestamp string in format provided by google sheets
+        ts : (str)
+            A timestamp string in format provided by google sheets
 
         Examples
         ---------
         >>> DateParser.parse_timestamp('2023-03-08 19:59:16.471152+00:00')
+        datetime(2023, 3, 8, 19, 59, 16, tzinfo=utc)
+
+        Returns
+        --------
+        datetime
         """
         if isinstance(ts, datetime):
             return ts

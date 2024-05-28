@@ -23,17 +23,21 @@ class SpreadsheetService(DateParser):
     Parameters
     --------------
 
-        credentials_filepath : (str)
-            path to local service account JSON file
+    credentials_filepath : str
+        path to local service account JSON file
 
-        document_id : (str)
-            google sheets document identifier (obtained from the URL)
+    document_id : str
+        google sheets document identifier (obtained from the URL)
 
-        creds or credentials : (google.auth.compute_engine.credentials.Credentials)
-            optionally pass credentials object instead of filepath
+    credentials : google.auth.compute_engine.credentials.Credentials
+        optionally pass credentials object instead of filepath
+        alternatively use creds parameter as an alias
 
-    Example (Colab Notebook)
+    Examples
     -----------------------------
+
+    Example usage within a colab notebook:
+
     >>> from google.colab import auth
     >>> from google.auth import default
     >>> from gspread_models import SpreadsheetService
@@ -42,6 +46,7 @@ class SpreadsheetService(DateParser):
     >>> creds, _ = default()
     >>> service = SpreadsheetService(creds=creds, document_id="my-document-id")
     >>> print(service.doc)
+    'doc-id'
     """
 
     def __init__(self, document_id, credentials_filepath=None, creds=None, credentials=None):
@@ -96,7 +101,6 @@ class SpreadsheetService(DateParser):
 if __name__ == "__main__":
 
     from pprint import pprint
-
 
     ss = SpreadsheetService()
 
