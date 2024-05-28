@@ -11,12 +11,11 @@ on:
     # unrelated files, you can make this run only if a file within that specific
     # folder has been modified.
     #
-    paths:
-    - docs/**
+    #paths:
+    #- docs/**
 
-    # make this workflow manually runnable
-    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
-
+  # make this workflow manually runnable
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
   workflow_dispatch:
 
 
